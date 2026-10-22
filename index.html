@@ -157,12 +157,11 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
       <button data-tab="salt"><span class="num">8</span> Salt gradient</button>
       <button data-tab="saltresp"><span class="num">9</span> Salt response</button>
       <button data-tab="gradmap"><span class="num">10</span> Gradient map</button>
-      <button data-tab="saltcode"><span class="num">11</span> Gradient code</button>
-      <button data-tab="data"><span class="num">12</span> Data &amp; groups</button>
-      <button data-tab="params"><span class="num">13</span> Analysis settings</button>
-      <button data-tab="methods"><span class="num">14</span> Methods</button>
-      <button data-tab="export"><span class="num">15</span> Export</button>
-      <button data-tab="guide"><span class="num">16</span> Guide for beginners</button>
+      <button data-tab="data"><span class="num">11</span> Data &amp; groups</button>
+      <button data-tab="params"><span class="num">12</span> Analysis settings</button>
+      <button data-tab="methods"><span class="num">13</span> Methods</button>
+      <button data-tab="export"><span class="num">14</span> Import &amp; export</button>
+      <button data-tab="guide"><span class="num">15</span> Guide for beginners</button>
     </nav>
     <div style="margin-top:14px;padding:0 8px">
       <button class="btn sm" id="themeBtn" style="width:100%;justify-content:center">Toggle theme</button>
@@ -240,9 +239,9 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
         </div>
         <div class="row" style="margin-top:12px;border-top:1px solid var(--line);padding-top:11px">
           <div style="min-width:165px"><label class="f">Show reorientations</label>
-            <select id="trkMark"><option value="A">Method A only</option><option value="B">Method B only</option><option value="C">Method C only</option><option value="both">A + B</option><option value="all">All methods</option><option value="none">None</option></select></div>
+            <select id="trkMark"><option value="A">Method A only</option><option value="B" selected>Method B only</option><option value="C">Method C only</option><option value="both">A + B</option><option value="all">All methods</option><option value="none">None</option></select></div>
           <div style="min-width:165px"><label class="f">Method used for the stats</label>
-            <select id="primary"><option value="A">A — pirouette</option><option value="B">B — heading change</option><option value="C">C — posture (reversals + omega)</option></select></div>
+            <select id="primary"><option value="A">A — pirouette</option><option value="B" selected>B — heading change</option><option value="C">C — posture (reversals + omega)</option></select></div>
           <div style="min-width:165px"><label class="f">Layout</label>
             <select id="trkLayout"><option value="cond">One panel per condition</option><option value="worm">One panel per worm</option></select></div>
           <div style="min-width:120px"><label class="f">Panel size <span class="hint">px</span></label>
@@ -274,7 +273,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
               <div class="symhead"><span id="prevA"></span> <b>Method A reorientations</b></div>
               <div class="grid g4">
                 <div><label class="f">Symbol</label><select id="mkAShape" class="shapesel"></select></div>
-                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkASize" value="8" step="1" min="2" max="40"></div>
+                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkASize" value="1" step="1" min="1" max="40"></div>
                 <div><label class="f">Colour</label><input type="color" id="mkAColor" value="#d1495b" style="width:100%"></div>
                 <div><label class="f">Line weight</label><input type="number" id="mkAWidth" value="1.5" step="0.25" min="0.25" max="6"></div>
               </div>
@@ -284,7 +283,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
               <div class="symhead"><span id="prevB"></span> <b>Method B reorientations</b></div>
               <div class="grid g4">
                 <div><label class="f">Symbol</label><select id="mkBShape" class="shapesel"></select></div>
-                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkBSize" value="9" step="1" min="2" max="40"></div>
+                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkBSize" value="1" step="1" min="1" max="40"></div>
                 <div><label class="f">Colour</label><input type="color" id="mkBColor" value="#2a6df4" style="width:100%"></div>
                 <div><label class="f">Line weight</label><input type="number" id="mkBWidth" value="1.4" step="0.25" min="0.25" max="6"></div>
               </div>
@@ -294,7 +293,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
               <div class="symhead"><span id="prevC"></span> <b>Method C reorientations</b></div>
               <div class="grid g4">
                 <div><label class="f">Symbol</label><select id="mkCShape" class="shapesel"></select></div>
-                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkCSize" value="10" step="1" min="2" max="40"></div>
+                <div><label class="f">Size <span class="hint">px</span></label><input type="number" id="mkCSize" value="1" step="1" min="1" max="40"></div>
                 <div><label class="f">Colour</label><input type="color" id="mkCColor" value="#c8a31a" style="width:100%"></div>
                 <div><label class="f">Line weight</label><input type="number" id="mkCWidth" value="1.5" step="0.25" min="0.25" max="6"></div>
               </div>
@@ -538,7 +537,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
     <div class="head">
       <h2>Salt gradient</h2>
       <p>A chemotaxis plate has no salt sensor in it, so the gradient has to be <b>modelled</b>. A drop of concentrated NaCl placed on the agar spreads by diffusion, and the concentration it leaves behind depends only on how much salt was in the drop, how long ago it was placed, how thick the agar is, and how far away you are from it. Set the plate and the drops here once and every salt analysis in the app — the response plots, the map, the exported numbers — follows from it.</p>
-      <p>The default model and its constants are the ones used in the lab's own simulation notebook, so the field you see here is the field you would get there. The exact formula and code are on the <b>Gradient code</b> tab.</p>
+      <p>The default model and its constants are the ones used in the lab's own simulation notebook, so the field you see here is the field you would get there. The exact formula, the code that runs it and a standalone Python copy are at the bottom of the <b>Methods</b> tab.</p>
     </div>
     <div class="card">
       <h3>Plate and agar</h3>
@@ -655,6 +654,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
         <div style="min-width:190px"><label class="f">Trim <span class="hint">% cut off each tail · equal width only</span></label>
           <input type="number" id="saltTrim" value="1" step="any" min="0" max="20"></div>
         <div style="align-self:flex-end;padding-bottom:2px"><label class="chk"><input type="checkbox" id="saltPerInt" checked> Also plot ΔC over a single sampling interval</label></div>
+        <div style="align-self:flex-end;padding-bottom:2px"><label class="chk"><input type="checkbox" id="saltTrimFig"> Show what the bins leave out</label></div>
         <div style="align-self:flex-end;padding-bottom:2px"><button class="btn sm" id="saltGoParams">Gradient parameters →</button></div>
       </div>
       <div class="row" style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">
@@ -768,14 +768,6 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
     <div class="card"><h3>Salt experienced, per replicate</h3><div class="scroll" id="gmTable"></div></div>
   </section>
 
-  <!-- ============ GRADIENT CODE ============ -->
-  <section class="tab" id="tab-saltcode">
-    <div class="head">
-      <h2>Gradient code</h2>
-      <p>Nothing about the gradient is hidden. Below is the formula, the exact JavaScript this app runs, the Python from the lab's simulation notebook it was built to match, and a standalone Python file you can download, run, and check against the numbers here.</p>
-    </div>
-    <div id="saltCodeBody"></div>
-  </section>
 
   <!-- ============ DATA ============ -->
   <section class="tab" id="tab-data">
@@ -933,21 +925,35 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
   <section class="tab" id="tab-methods">
     <div class="head"><h2>How reorientations are calculated</h2></div>
     <div class="card"><div class="prose" id="methodsProse"></div></div>
+    <div class="card" id="saltCodeCard"></div>
   </section>
 
   <!-- ============ EXPORT ============ -->
   <section class="tab" id="tab-export">
     <div class="head">
-      <h2>Export</h2>
-      <p>Every table is available as CSV and every figure as SVG (vector), PNG (high-resolution raster) or PDF (vector). Figures can also be exported individually from the button row under each plot.</p>
+      <h2>Import and export</h2>
+      <p><b>Out:</b> every table as CSV — long format for scripting, wide format ready to paste into Prism — and every figure as SVG (vector), PNG (high-resolution raster) or PDF, individually or all in one document. Figures can also be exported one at a time from the button row under each plot.</p>
+      <p><b>In:</b> drop an exported project archive back in and the whole session returns — the same files, conditions, colours and thresholds, producing identical numbers. A settings file alone restores every threshold without the data.</p>
     </div>
     <div class="card">
       <h3>Data tables</h3>
-      <div class="row" id="csvBtns"></div>
+      <div class="row">
+        <button class="btn pri" id="csvZip">All tables (.zip)</button>
+        <button class="btn" id="wideZip">Wide format, ready for Prism (.zip)</button>
+        <span style="font-size:11.5px;color:var(--ink-3)">long format for scripting · wide format for pasting into a graphing program</span>
+      </div>
+      <details style="margin-top:10px">
+        <summary style="cursor:pointer;font-size:12.5px;color:var(--ink-2)" id="csvPickSummary">Pick individual tables</summary>
+        <div class="row" id="csvBtns" style="margin-top:10px"></div>
+      </details>
     </div>
     <div class="card">
       <h3>All figures</h3>
       <div class="row" id="figBtns"></div>
+      <div class="row" style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">
+        <button class="btn pri" id="allPdf">All figures as one PDF</button>
+        <span style="font-size:11.5px;color:var(--ink-3)" id="allPdfHint"></span>
+      </div>
       <div class="note">Figures are exported exactly as drawn, including the shared axis ranges and your symbol choices, so panels stay comparable when placed side by side in a figure.</div>
     </div>
     <div class="card">
@@ -957,7 +963,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--m
         <label class="chk"><input type="checkbox" id="zipSource" checked> Include the original uploaded files <span class="hint">— needed to reopen the project</span></label>
         <span style="font-size:11.5px;color:var(--ink-3)" id="zipHint"></span>
       </div>
-      <div class="note">The archive contains <span class="mono">csv/</span>, <span class="mono">figures_svg/</span>, <span class="mono">figures_pdf/</span>, <span class="mono">figures_png/</span>, <span class="mono">analysis_settings.json</span>, a <span class="mono">README.txt</span> listing every setting used, and — with the box ticked — <span class="mono">source_data/&lt;condition&gt;/</span> holding the files you loaded, with a manifest. That is everything needed to reproduce the analysis from scratch.</div>
+      <div class="note">The archive contains <span class="mono">csv/</span> (long format, one file per table), <span class="mono">wide/</span> (the same numbers one-graph-per-file, ready to paste into Prism or to supply as raw data), <span class="mono">figures_svg/</span>, <span class="mono">figures_pdf/</span> — including <span class="mono">ALL_figures.pdf</span>, every panel in one document — <span class="mono">figures_png/</span>, <span class="mono">analysis_settings.json</span>, a <span class="mono">README.txt</span> listing every setting used, and — with the box ticked — <span class="mono">source_data/&lt;condition&gt;/</span> holding the files you loaded, with a manifest. That is everything needed to reproduce the analysis from scratch.</div>
     </div>
     <div class="card">
       <h3>Reopen a project</h3>
@@ -1182,7 +1188,7 @@ class Fig {
     P.push('</svg>'); return P.join('');
   }
 
-  toPDF() {
+  pdfStream() {
     const H = this.h, hex = c => { c = String(c || '#000').trim().replace('#', '');
       if (c.length === 3) c = c.split('').map(x => x + x).join('');
       if (!/^[0-9a-fA-F]{6}$/.test(c)) return '0 0 0';
@@ -1222,26 +1228,75 @@ class Fig {
           c.push(`${ca.toFixed(5)} ${sa.toFixed(5)} ${(-sa).toFixed(5)} ${ca.toFixed(5)} ${tx.toFixed(2)} ${ty.toFixed(2)} Tm`);
           c.push(`(${pdfText(it.s)}) Tj ET`);
         } else { c.push(`1 0 0 1 ${X(it.x + dx)} ${Y(it.y)} Tm (${pdfText(it.s)}) Tj ET`); } } }
-    const stream = c.join('\n');
-    const gs = [...ops].sort().map(v => `/GS${v} << /Type /ExtGState /ca ${(v / 100).toFixed(2)} /CA ${(v / 100).toFixed(2)} >>`).join(' ');
-    const objs = [];
-    objs.push(`<< /Type /Catalog /Pages 2 0 R >>`);
-    objs.push(`<< /Type /Pages /Kids [3 0 R] /Count 1 >>`);
-    objs.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${this.w.toFixed(2)} ${H.toFixed(2)}] /Resources << /Font << /FR 5 0 R /FB 6 0 R >> /ExtGState << ${gs} >> >> /Contents 4 0 R >>`);
-    objs.push(`<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`);
-    objs.push(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>`);
-    objs.push(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>`);
-    let out = '%PDF-1.4\n', xref = [];
-    objs.forEach((o, i) => { xref.push(out.length); out += `${i + 1} 0 obj\n${o}\nendobj\n`; });
-    const start = out.length;
-    out += `xref\n0 ${objs.length + 1}\n0000000000 65535 f \n` +
-      xref.map(p => String(p).padStart(10, '0') + ' 00000 n \n').join('') +
-      `trailer\n<< /Size ${objs.length + 1} /Root 1 0 R >>\nstartxref\n${start}\n%%EOF`;
-    const bytes = new Uint8Array(out.length);
-    for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 0xff;
-    return bytes;
+    return { stream: c.join('\n'), ops };
   }
+
+  toPDF() { return pdfBundle([this]); }
 }
+
+/* ---------- one PDF holding every figure, one per page ----------
+   Each page keeps its own MediaBox, so panels of different sizes are not scaled
+   or cropped; the two Base-14 fonts are shared across the whole document. */
+function pdfBundle(figs) {
+  const pages = figs.filter(Boolean).map(f => { const s = f.pdfStream(); return { f, stream: s.stream, ops: s.ops }; });
+  if (!pages.length) return new Uint8Array(0);
+  const objs = [];
+  const pageNum = i => 5 + 2 * i, contentNum = i => 6 + 2 * i;
+  objs.push(`<< /Type /Catalog /Pages 2 0 R >>`);
+  objs.push(`<< /Type /Pages /Kids [${pages.map((_, i) => `${pageNum(i)} 0 R`).join(' ')}] /Count ${pages.length} >>`);
+  objs.push(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>`);
+  objs.push(`<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>`);
+  pages.forEach((p, i) => {
+    const gs = [...p.ops].sort((a, b) => a - b)
+      .map(v => `/GS${v} << /Type /ExtGState /ca ${(v / 100).toFixed(2)} /CA ${(v / 100).toFixed(2)} >>`).join(' ');
+    objs.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${p.f.w.toFixed(2)} ${p.f.h.toFixed(2)}] ` +
+      `/Resources << /Font << /FR 3 0 R /FB 4 0 R >> /ExtGState << ${gs} >> >> /Contents ${contentNum(i)} 0 R >>`);
+    objs.push(`<< /Length ${p.stream.length} >>\nstream\n${p.stream}\nendstream`);
+  });
+  let out = '%PDF-1.4\n'; const xref = [];
+  objs.forEach((o, i) => { xref.push(out.length); out += `${i + 1} 0 obj\n${o}\nendobj\n`; });
+  const start = out.length;
+  out += `xref\n0 ${objs.length + 1}\n0000000000 65535 f \n` +
+    xref.map(p => String(p).padStart(10, '0') + ' 00000 n \n').join('') +
+    `trailer\n<< /Size ${objs.length + 1} /Root 1 0 R >>\nstartxref\n${start}\n%%EOF`;
+  const bytes = new Uint8Array(out.length);
+  for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 0xff;
+  return bytes;
+}
+/* a plain cover page, so the bundle says what it is and what made it */
+function coverFig() {
+  const c = ST.analysis ? ST.analysis.c : cfg(), A = ST.analysis;
+  const W = 595, H = 842, fig = new Fig(W, H, 'cover');
+  let y = 86;
+  fig.text(56, y, 'Worm Track Analyzer', { size: 22, weight: 'bold', fill: INK.text }); y += 26;
+  fig.text(56, y, 'every figure from this analysis, one per page', { size: 12, fill: INK.tick }); y += 34;
+  fig.line(56, y, W - 56, y, { stroke: INK.grid, sw: 1 }); y += 26;
+  const line = (k, v) => { fig.text(56, y, k, { size: 10.5, fill: INK.tick });
+    fig.text(196, y, String(v), { size: 10.5, fill: INK.text }); y += 17; };
+  line('Generated', new Date().toLocaleString());
+  line('Conditions', ST.conds.map(cd => cd.name + (cd.grad === 'no' ? ' (no gradient)' : '')).join(', ') || '—');
+  if (A) line('Worms analysed', A.rows.length);
+  line('Replicate unit', c.nUnit === 'file' ? 'plate / file' : 'individual worm');
+  line('Frame rate', c.fps ? c.fps + ' fps' : 'not set — time in frames');
+  line('Spatial scale', c.pxmm ? c.pxmm + ' px/mm' : 'not set — distance in pixels');
+  line('Primary method', c.primary);
+  line('Smoothing', c.smoothMethod === 'sg' ? `Savitzky-Golay, window ${c.smoothWin}, order ${c.sgOrder}`
+    : c.smoothMethod === 'none' ? 'none' : `moving average, window ${c.smoothWin}`);
+  line('Sampling interval', `${c.dt} ${c.tUnit}`);
+  line('Method A', `${c.omegaThr} deg/${c.tUnit === 's' ? 's' : 'frame'}, t_crit ${c.tcrit} ${c.tUnit}`);
+  line('Method B', `${c.angThr} deg over ${c.angWin} ${c.tUnit}, refractory ${c.refrac} ${c.tUnit}`);
+  if (A && A.sc && A.sc.model === 'drops' && A.sc.drops.length)
+    line('Salt drops', A.sc.drops.map(d => `${d.vol} uL at ${d.hours} h`).join(', '));
+  y += 10;
+  fig.line(56, y, W - 56, y, { stroke: INK.grid, sw: 1 }); y += 22;
+  fig.text(56, y, 'Figures follow in the order they appear in the app.', { size: 10, fill: INK.tick });
+  return fig;
+}
+function allFigures() {
+  const figs = Object.keys(ST.figs).map(k => ST.figs[k]).filter(f => f && f.items && f.items.length);
+  return figs.length ? [coverFig(), ...figs] : [];
+}
+
 
 /* ---- download plumbing ---- */
 function saveBlob(blob, name) { const a = document.createElement('a'); const u = URL.createObjectURL(blob);
@@ -1253,6 +1308,8 @@ function figSVGBlob(fig) { const f = fig.clone(); f.bg = '#ffffff'; f.fg = '#111
   return new Blob([f.toSVG(true)], { type: 'image/svg+xml' }); }
 function figPDFBlob(fig) { const f = fig.clone(); f.bg = '#ffffff'; f.fg = '#111111';
   return new Blob([f.toPDF()], { type: 'application/pdf' }); }
+function figsPDFBlob(figs) { const fs = figs.map(f => { const g = f.clone(); g.bg = '#ffffff'; g.fg = '#111111'; return g; });
+  return new Blob([pdfBundle(fs)], { type: 'application/pdf' }); }
 function figPNGBlob(fig, scale = 3) { return new Promise(res => {
   const f = fig.clone(); f.bg = '#ffffff'; f.fg = '#111111';
   const svg = f.toSVG(true), url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml;charset=utf-8' }));
@@ -2346,14 +2403,44 @@ function frame(fig, B, xd, yd, opt = {}) {
   fig.line(x0, y1, x1, y1, { stroke: INK.axis, sw: 1 });
   fig.line(x0, y0, x0, y1, { stroke: INK.axis, sw: 1 });
   const fx = opt.fmtX || axisFmt, fy = opt.fmtY || axisFmt;
-  if (!opt.noXTicks) xt.forEach(v => { const X = sx(v); if (X < x0 - .5 || X > x1 + .5) return;
-    fig.line(X, y1, X, y1 + 4, { stroke: INK.axis, sw: 1 });
-    fig.text(X, y1 + 15, fx(v), { size: 10, anchor: 'middle', fill: INK.tick }); });
-  yt.forEach(v => { const Y = sy(v); if (Y < y0 - .5 || Y > y1 + .5) return;
-    fig.line(x0 - 4, Y, x0, Y, { stroke: INK.axis, sw: 1 });
-    fig.text(x0 - 7, Y + 3.4, fy(v), { size: 10, anchor: 'end', fill: INK.tick }); });
-  if (opt.xlab) fig.text((x0 + x1) / 2, y1 + 33, opt.xlab, { size: 11, anchor: 'middle', fill: INK.text });
-  if (opt.ylab) fig.text(opt.ylabX == null ? 14 : opt.ylabX, (y0 + y1) / 2, opt.ylab, { size: 11, anchor: 'middle', fill: INK.text, rot: -90 });
+  if (!opt.noXTicks) {
+    const vis = xt.filter(v => { const X = sx(v); return X >= x0 - .5 && X <= x1 + .5; });
+    vis.forEach(v => fig.line(sx(v), y1, sx(v), y1 + 4, { stroke: INK.axis, sw: 1 }));
+    /* A tick mark costs nothing, but a label that runs off the page or collides with
+       its neighbour is worse than no label. Labels are therefore thinned by a whole
+       stride — which keeps them evenly spaced — and the outermost one is anchored
+       inwards rather than centred past the edge of the figure. */
+    const size = opt.tickSize || 10;
+    const labs = vis.map(v => String(fx(v)));
+    const widest = labs.length ? maxOf(labs.map(t => txtWidth(t, size))) : 0;
+    let stride = 1;
+    if (vis.length > 1) { const gap = Math.abs(sx(vis[1]) - sx(vis[0])) || 1;
+      while (stride < vis.length && (widest + 6) > gap * stride) stride++; }
+    for (let i = 0; i < vis.length; i += stride) {
+      const X = sx(vis[i]), t = labs[i], w = txtWidth(t, size);
+      let anc = 'middle', tx = X;
+      if (X - w / 2 < 1) { anc = 'start'; tx = 1; }
+      else if (X + w / 2 > fig.w - 1) { anc = 'end'; tx = fig.w - 1; }
+      fig.text(tx, y1 + 15, t, { size, anchor: anc, fill: INK.tick });
+    }
+  }
+  { const ysize = opt.tickSize || 10;
+    const yvis = yt.filter(v => { const Y = sy(v); return Y >= y0 - .5 && Y <= y1 + .5; });
+    yvis.forEach(v => fig.line(x0 - 4, sy(v), x0, sy(v), { stroke: INK.axis, sw: 1 }));
+    let ystride = 1;
+    if (yvis.length > 1) { const gap = Math.abs(sy(yvis[1]) - sy(yvis[0])) || 1;
+      while (ystride < yvis.length && (ysize + 3) > gap * ystride) ystride++; }
+    for (let i = 0; i < yvis.length; i += ystride) {
+      const v = yvis[i], t = String(fy(v));
+      let fs = ysize;
+      while (fs > 7 && txtWidth(t, fs) > x0 - 8) fs -= .5;     // squeeze rather than clip
+      fig.text(x0 - 7, sy(v) + 3.4, t, { size: fs, anchor: 'end', fill: INK.tick }); } }
+  if (opt.xlab) { let fs = 11;
+    while (fs > 8 && txtWidth(String(opt.xlab), fs) > fig.w - 10) fs -= .5;
+    fig.text((x0 + x1) / 2, y1 + 33, opt.xlab, { size: fs, anchor: 'middle', fill: INK.text }); }
+  if (opt.ylab) { let fs = 11;
+    while (fs > 8 && txtWidth(String(opt.ylab), fs) > fig.h - 10) fs -= .5;
+    fig.text(opt.ylabX == null ? 14 : opt.ylabX, (y0 + y1) / 2, opt.ylab, { size: fs, anchor: 'middle', fill: INK.text, rot: -90 }); }
   return { sx, sy, xt, yt };
 }
 
@@ -2565,6 +2652,7 @@ function fieldTrackFig(title, tracks, dom, opt) {
 
   /* --- contour rings, labelled in mM --- */
   if (T && opt.contour !== false) {
+    const placedLab = [];          // a contour label is skipped rather than stacked on another
     saltTicks(opt.scale || 'log', cLo, cHi).forEach(v => {
       const rr = saltRadiusAt(v, sc, tAdd, rFar / 10 * 1.05) * 10;
       if (!(rr > 0)) return;
@@ -2572,9 +2660,13 @@ function fieldTrackFig(title, tracks, dom, opt) {
         { stroke: ink, sw: .75, op: .8 });
       if (opt.labels !== false && segs.length) {
         const cand = [[src.x, src.y - rr], [src.x, src.y + rr], [src.x + rr, src.y], [src.x - rr, src.y]];
-        for (const q of cand) { const X = sx(q[0]), Y = sy(q[1]);
-          if (X > B.x0 + 18 && X < B.x1 - 18 && Y > B.y0 + 13 && Y < B.y1 - 5) {
-            fig.text(X, Y - 3, fmt(v, 3), { size: 8.5, anchor: 'middle', fill: ink }); break; } }
+        const t = fmt(v, 3), tw = txtWidth(t, 8.5);
+        for (const q of cand) { const X = sx(q[0]), Y = sy(q[1]) - 3;
+          if (!(X > B.x0 + 18 && X < B.x1 - 18 && Y > B.y0 + 13 && Y < B.y1 - 5)) continue;
+          const box = { a: X - tw / 2 - 2, b: X + tw / 2 + 2, y: Y };
+          if (placedLab.some(p => Math.abs(p.y - box.y) < 9 && box.a < p.b && p.a < box.b)) continue;
+          placedLab.push(box);
+          fig.text(X, Y, t, { size: 8.5, anchor: 'middle', fill: ink }); break; }
       }
     });
   }
@@ -2648,6 +2740,15 @@ function plateFieldFig(sc, scale) {
     plate: { cx: d / 2, cy: d / 2, dia: d, ring: sc.ring },
     note: `peak ${fmt(saltPeakC(sc, 0), 3)} mM · background ${fmt(sc.bg, 3)} mM`,
   });
+}
+function plateFieldGrid(sc, step) {
+  const d = sc.plateDia, st = step || Math.max(0.5, d / 100);
+  const spot = sc.spot === 'centre' ? { x: d / 2, y: d / 2 }
+    : sc.spot === 'edge' ? { x: d / 2, y: d * .1 } : { x: d / 2, y: d / 4 };
+  const rows = [['x (mm)', 'y (mm)', 'C (mM)']];
+  for (let y = 0; y <= d + 1e-9; y += st) for (let x = 0; x <= d + 1e-9; x += st)
+    rows.push([+x.toFixed(3), +y.toFixed(3), saltAt(Math.hypot(x - spot.x, y - spot.y) / 10, sc, 0)]);
+  return { name: 'salt_field_grid', rows };
 }
 
 /* ---------- categorical dot / bar plot with stats brackets ---------- */
@@ -2724,10 +2825,13 @@ function dotFig(title, groups, ylab, st, opt = {}) {
   const tickW = yt.length ? maxOf(yt.map(t => txtWidth(axisFmt(t), 10))) : 20;
   const pad = { l: Math.max(48, Math.round(16 + 12 + tickW + 8)), r: 22, t: 34,
     b: Math.round(14 + nLines * lineH + 15 + (anyNote ? 12 : 0) + 20) };
-  const W = pad.l + pad.r + colW * nG, H = pad.t + bh + pad.b;
+  /* a narrow panel must not clip its own title: widen the canvas to fit it */
+  const titleX = Math.max(6, pad.l - 44);
+  const W = Math.max(pad.l + pad.r + colW * nG, titleX + txtWidth(String(title), 12, true) + 6);
+  const H = pad.t + bh + pad.b;
   const fig = new Fig(W, H, title);
   const B = { x0: pad.l, y0: pad.t, x1: pad.l + colW * nG, y1: pad.t + bh };
-  fig.text(Math.max(6, pad.l - 44), 16, title, { size: 12, weight: 'bold', fill: INK.text });
+  fig.text(titleX, 16, title, { size: 12, weight: 'bold', fill: INK.text });
   const A = frame(fig, B, [0, nG], yd, { ylab, yTicks: yt, noXTicks: true, ylabX: 16 });
   const cx = i => B.x0 + colW * (i + .5);
 
@@ -2808,11 +2912,69 @@ function magHistFig(title, vals, thr, xlab, color, below) {
     fig.rect(X0 + .5, A.sy(f), Math.max(1, X1 - X0 - 1), A.sy(0) - A.sy(f), { fill: above ? '#d1495b' : color, op: above ? .55 : .38 }); });
   const TX = A.sx(clamp(thr, 0, hi));
   fig.line(TX, B.y0, TX, B.y1, { stroke: '#d1495b', sw: 1.6, dash: '4,3' });
-  fig.text(TX + 5, B.y0 + 12, `threshold ${fmt(thr)}`, { size: 10, fill: '#d1495b' });
   const pct = 100 * v.filter(x => below ? x <= thr : x >= thr).length / v.length;
-  fig.text(W - pad.r, B.y0 + 12, `${pct.toFixed(1)}% of samples ${below ? 'below' : 'above'}`, { size: 10, anchor: 'end', fill: INK.tick });
+  const rt = `${pct.toFixed(1)}% of samples ${below ? 'below' : 'above'}`;
+  fig.text(W - pad.r, B.y0 + 12, rt, { size: 10, anchor: 'end', fill: INK.tick });
+  /* the threshold caption flips to the left of its line rather than running into
+     the summary on the right */
+  const tl = `threshold ${fmt(thr)}`, tw = txtWidth(tl, 10);
+  const roomRight = (W - pad.r - txtWidth(rt, 10)) - 4;
+  if (TX + 5 + tw <= roomRight) fig.text(TX + 5, B.y0 + 12, tl, { size: 10, fill: '#d1495b' });
+  else if (TX - 5 - tw >= B.x0 && TX - 5 <= roomRight) fig.text(TX - 5, B.y0 + 12, tl, { size: 10, anchor: 'end', fill: '#d1495b' });
+  else fig.text(B.x0 + 2, B.y0 + 26, tl, { size: 10, fill: '#d1495b' });
   return fig;
 }
+/* ---------- what the binning keeps, and what the trim throws away ----------
+   A histogram of every pooled sample of the x-variable, with the region the bins
+   actually cover drawn in colour and the discarded tails in red. The vertical
+   lines are the bin edges, so the figure is literally the ruler laid over the data. */
+function trimFig(title, vals, edges, sc, xlab, color) {
+  const pad = { l: 64, r: 18, t: 36, b: 80 }, W = 540, H = 318;
+  const fig = new Fig(W, H, title);
+  const v = vals.filter(isFinite).sort((a, b) => a - b);
+  if (v.length < 5) return fig;
+  const lo = v[0], hi = v[v.length - 1];
+  const kLo = edges[0], kHi = edges[edges.length - 1];
+  const span = (hi - lo) || 1;
+  const nb = 60, bw = span / nb, h = new Array(nb).fill(0);
+  v.forEach(x => h[clamp(Math.floor((x - lo) / bw), 0, nb - 1)]++);
+  const ymax = Math.max(maxOf(h), 1);
+  const B = { x0: pad.l, y0: pad.t, x1: W - pad.r, y1: H - pad.b };
+  fig.text(pad.l - 54, 16, title, { size: 12, weight: 'bold', fill: INK.text });
+  const A = frame(fig, B, [lo, hi], [0, ymax * 1.14], { grid: false, ylab: 'samples' });
+  { let fs = 11; while (fs > 8 && txtWidth(String(xlab), fs) > W - 10) fs -= .5;
+    fig.text((B.x0 + B.x1) / 2, B.y1 + 46, xlab, { size: fs, anchor: 'middle', fill: INK.text }); }
+  const CUT = '#d1495b';
+  h.forEach((n, i) => { if (!n) return;
+    const a = lo + i * bw, b2 = lo + (i + 1) * bw, mid = (a + b2) / 2;
+    const X0 = A.sx(a), X1 = A.sx(b2);
+    const out = mid < kLo || mid > kHi;
+    fig.rect(X0 + .4, A.sy(n), Math.max(.8, X1 - X0 - .8), A.sy(0) - A.sy(n),
+      { fill: out ? CUT : color, op: out ? .85 : .55 }); });
+  // the bins themselves
+  edges.forEach((e, i) => { const X = A.sx(e);
+    if (X < B.x0 - .5 || X > B.x1 + .5) return;
+    const edge = (i === 0 || i === edges.length - 1);
+    fig.line(X, B.y0, X, B.y1, { stroke: edge ? CUT : INK.tick, sw: edge ? 1.5 : .6,
+      dash: edge ? '4,3' : null, op: edge ? 1 : .55 }); });
+  const nOut = v.filter(x => x < kLo || x > kHi).length;
+  const pct = 100 * nOut / v.length;
+  fig.text(B.x0, B.y0 - 7, `${edges.length - 1} bins · ${v.length - nOut} samples inside`,
+    { size: 9.5, fill: INK.tick });
+  if (nOut) {
+    fig.text(B.x1, B.y0 - 7, `${nOut} cut (${pct.toFixed(1)}%)`, { size: 9.5, anchor: 'end', fill: CUT });
+    [[kLo, 'start'], [kHi, 'end']].forEach(([e, anc]) => {
+      const X = A.sx(e); if (X < B.x0 - .5 || X > B.x1 + .5) return;
+      const t = fmt(e, 4), w = txtWidth(t, 9);
+      const tx = clamp(X, 1 + (anc === 'end' ? w : 0), W - 1 - (anc === 'start' ? w : 0));
+      fig.text(tx, B.y1 + 30, t, { size: 9, anchor: anc, fill: CUT }); });
+  }
+  const key = [{ label: 'inside the bins — plotted', color, op: .55 },
+    { label: nOut ? 'outside — dropped from the plot' : 'nothing is dropped', color: CUT, op: .85 }];
+  legendRow(fig, key, H - 16, pad.l, W - pad.r);
+  return fig;
+}
+
 function curveFig(title, series, xlab, ylab, thrs) {
   const pad = { l: 66, r: 18, t: 30, b: 84 }, W = 520, H = 328;
   const fig = new Fig(W, H, title);
@@ -2977,9 +3139,9 @@ const schedule = () => { clearTimeout(RENDER_T); RENDER_T = setTimeout(renderAll
 
 /* ---- symbol settings ---- */
 const MK_DEFAULTS = {
-  A: { shape: 'circle', size: 8, color: '#d1495b', width: 1.5, filled: false },
-  B: { shape: 'diamond', size: 9, color: '#2a6df4', width: 1.4, filled: false },
-  C: { shape: 'triangle', size: 10, color: '#c8a31a', width: 1.5, filled: false },
+  A: { shape: 'circle', size: 1, color: '#2a6df4', width: 1, filled: false },
+  B: { shape: 'circle', size: 1, color: '#d1495b', width: 1, filled: false },
+  C: { shape: 'triangle', size: 1, color: '#c8a31a', width: 1, filled: false },
   S: { shape: 'circle', size: 6, color: '#12a67a', width: 1.3, filled: true, auto: false },
   E: { shape: 'square', size: 6, color: '#7b57d6', width: 1.3, filled: false, auto: false },
 };
@@ -3209,7 +3371,7 @@ const WATCH = ['fps','pxmm','rateUnit','smoothWin','smoothMethod','sgOrder','dt'
  'saltModel','saltPlateDia','saltAgarVol','saltBg','saltStock','saltD','saltClock',
  'sdV1','sdT1','sdV2','sdT2','sdV3','sdT3','sdV4','sdT4',
  'saltPeak','saltSigma','saltLambda','saltRamp','saltSpot','saltRing','saltBands','saltRampSel','saltScale',
- 'saltWin','saltBins','saltBinMode','saltTrim','saltPerInt',
+ 'saltWin','saltBins','saltBinMode','saltTrim','saltPerInt','saltTrimFig',
  'gmLayout','gmRamp','gmBands','gmScale','gmSize','gmAt','gmContour','gmLabels','gmHalo','gmCbar','gmMarks','gmReo','gmRing',
  'saltCx','saltCy'];
 const TOUCHED = new Set();
@@ -3238,10 +3400,75 @@ $('axFill').onclick = () => { const d = ST.lastDomain; if (!d) return;
   $('axXmin').value = +d[0][0].toFixed(2); $('axXmax').value = +d[0][1].toFixed(2);
   $('axYmin').value = +d[1][0].toFixed(2); $('axYmax').value = +d[1][1].toFixed(2); schedule(); };
 
+/* ---------- the numbers behind one figure, in the shape a graphing program wants ----------
+   Every figure that has a tabular form registers one of these, so the CSV button under a
+   plot gives exactly what that plot drew — not a whole tab's worth of columns to hunt through. */
+function wideFromGroups(name, groups) {           // one column per condition, one row per replicate
+  const g = (groups || []).filter(x => x && x.values && x.values.length);
+  if (!g.length) return null;
+  const rows = [g.map(x => x.name)];
+  let maxN = 0; g.forEach(x => { if (x.values.length > maxN) maxN = x.values.length; });
+  for (let i = 0; i < maxN; i++) rows.push(g.map(x => x.values[i] == null || !isFinite(x.values[i]) ? '' : x.values[i]));
+  return { name, rows };
+}
+function wideFromSeries(name, series, xlab) {     // X down the side, mean / SEM / N per condition
+  const s = (series || []).filter(x => x && x.bins && x.bins.length);
+  if (!s.length) return null;
+  const head = [`X — ${xlab} (bin centre)`, 'bin from', 'bin to'];
+  s.forEach(x => head.push(`${x.name} — mean`, `${x.name} — SEM`, `${x.name} — N`));
+  const nB = s[0].bins.length, rows = [head];
+  for (let k = 0; k < nB; k++) {
+    const b0 = s[0].bins[k], r = [b0.mid, b0.x0, b0.x1];
+    s.forEach(x => { const b = x.bins[k] || {};
+      r.push(isFinite(b.mean) ? b.mean : '', isFinite(b.sem) ? b.sem : '', b.n == null ? '' : b.n); });
+    rows.push(r);
+  }
+  return { name, rows };
+}
+function wideFromPts(name, series, xlab, ylab) {  // curves that carry [x, y] pairs
+  const s = (series || []).filter(x => x && x.pts && x.pts.length);
+  if (!s.length) return null;
+  const xs = [...new Set(s.flatMap(x => x.pts.map(p => +p[0])))].sort((a, b) => a - b);
+  const maps = s.map(x => { const m = new Map(); x.pts.forEach(p => m.set(+p[0], p[1])); return m; });
+  const head = [`X — ${xlab}`];
+  s.forEach(x => head.push(`${x.name}${ylab ? ' — ' + ylab : ''}`));
+  const rows = [head];
+  xs.forEach(x => { const r = [x];
+    maps.forEach(m => { const v = m.get(x); r.push(v == null || !isFinite(v) ? '' : v); });
+    rows.push(r); });
+  return { name, rows };
+}
+function wideFromTracks(name, rows3) {          // raw coordinates behind a track or map panel
+  const rows = [['Condition', 'File', 'Worm', 'Time', 'x', 'y', 'reorientation']];
+  rows3.forEach(({ cond, w, ev }) => { const marks = new Set((ev || []).map(e => e.i));
+    for (let i = 0; i < w.n; i++) if (w.xs[i] != null)
+      rows.push([cond, w.file, w.id, w.ts[i], w.xs[i], w.ys[i], marks.has(i) ? 'yes' : '']); });
+  return rows.length > 1 ? { name, rows } : null;
+}
+function wideFromEventList(name, list) {        // one row per reorientation
+  const rows = [['Condition', 'File', 'Worm', 'Time', 'x', 'y', 'C there (mM)']];
+  list.forEach(({ cond, w, ev }) => (ev || []).forEach(e => {
+    const i = Math.max(0, e.span[0] - 1);
+    rows.push([cond, w.file, w.id, e.t, e.x, e.y, w.salt ? w.salt.C[i] : '']); }));
+  return rows.length > 1 ? { name, rows } : null;
+}
+function wideFromValues(name, label, vals) {      // a pooled distribution, one column
+  const v = (vals || []).filter(isFinite);
+  if (!v.length) return null;
+  return { name, rows: [[label], ...v.map(x => [x])] };
+}
+function wideFromValueGroups(name, groups) {      // pooled distributions, one column per condition
+  return wideFromGroups(name, groups);
+}
+
 /* ---- figure card: view zoom (pan + magnify) and, on track panels, box zoom of the axes ---- */
 ST.zoom = ST.zoom || {};
+ST.figWide = ST.figWide || {};
 function figCard(key, fig, subtitle, opt = {}) {
   ST.figs[key] = fig;
+  const srcWide = opt.wide != null ? opt.wide : fig.wideData;
+  const wides = (Array.isArray(srcWide) ? srcWide : [srcWide]).filter(w => w && w.rows && w.rows.length > 1);
+  if (wides.length) ST.figWide[key] = wides.map(w => ({ ...w, figure: fig.title }));
   const body = el('div', { class: 'figbody zoomable', html: fig.toSVG(false) });
   const svg = body.querySelector('svg');
   const bar = el('div', { class: 'figbar' });
@@ -3322,6 +3549,13 @@ function figCard(key, fig, subtitle, opt = {}) {
   bar.appendChild(el('button', { class: 'btn sm', title: 'Reset the view (or double-click the figure)',
     onclick: () => { vb = base.slice(); apply(); } }, 'Reset view'));
   bar.appendChild(el('span', { style: 'flex:1' }));
+  if (wides.length) bar.appendChild(el('button', { class: 'btn sm',
+    title: 'The numbers behind this figure, wide format — one column per condition, ready to paste into Prism',
+    onclick: () => { if (wides.length === 1) {
+        saveBlob(new Blob([toCSV(wides[0].rows)], { type: 'text/csv' }), safeName(wides[0].name) + '.csv'); return; }
+      const enc = t => new TextEncoder().encode(t);
+      saveBlob(makeZip(wides.map(w => ({ name: safeName(w.name) + '.csv', data: enc(toCSV(w.rows)) }))),
+        safeName(fig.title) + '_data.zip'); } }, 'CSV'));
   [['SVG', () => saveBlob(figSVGBlob(fig), safeName(fig.title) + '.svg')],
    ['PNG', async () => { const b = await figPNGBlob(fig); if (b) saveBlob(b, safeName(fig.title) + '.png'); }],
    ['PDF', () => saveBlob(figPDFBlob(fig), safeName(fig.title) + '.pdf')]]
@@ -3400,7 +3634,7 @@ function tableHTML(key, name, header, rows) {
    ========================================================================== */
 function renderAll() {
   const c = cfg();
-  ST.figs = {}; ST.tables = {};
+  ST.figs = {}; ST.tables = {}; ST.figWide = {};
   $('unitNote').innerHTML = `Time is reported in <b>${c.tUnit}</b>${c.hasTime ? ` (${c.fps} fps)` : ' — enter a frame rate to convert to seconds'}; ` +
     `distance in <b>${c.sUnit}</b>${c.hasSpace ? ` (${c.pxmm} px/mm)` : ' — enter pixels per mm to convert to millimetres'}. ` +
     `Every threshold below that has a time unit is expressed per <b>${c.tUnit === 's' ? 'second' : 'frame'}</b>.` + (AUTO_NOTE || '');
@@ -3498,10 +3732,11 @@ function persistenceAt(A, L) { let s = 0, k = 0; L = Math.max(1, Math.round(L));
 /* directional persistence: <cos Δθ> as a function of lag — tells you what Δt is meaningful */
 function persistenceFig(A) {
   const c = A.c;
+  const KEEP = {};
   const lags = [];
   for (let k = -4; k <= 8; k++) lags.push(Math.max(1, Math.round(c.dt * c.F * Math.pow(2, k / 2))));
   const uniq = [...new Set(lags)].sort((a, b) => a - b);
-  const series = A.conds.map(cd => ({ name: cd.name, color: cd.color, pts: uniq.map(L => {
+  const series = KEEP.series = A.conds.map(cd => ({ name: cd.name, color: cd.color, pts: uniq.map(L => {
     let s = 0, k = 0;
     cd.used.forEach(w => { const X = w.sm.x, Y = w.sm.y, n = X.length;
       for (let i = 0; i + 2 * L < n; i += Math.max(1, Math.round(L / 2))) {
@@ -3512,6 +3747,7 @@ function persistenceFig(A) {
     return [L / c.F, k ? s / k : NaN]; }).filter(p => isFinite(p[1])) })).filter(s => s.pts.length);
   const fig = curveFig('Directional persistence vs sampling interval', series,
     `sampling interval (${c.tUnit})`, '⟨cos Δθ⟩ between consecutive steps', [{ v: c.dt, label: 'current Δt', color: '#7b57d6' }]);
+  fig.wideData = wideFromPts('directional_persistence', KEEP.series, `lag (${c.tUnit})`, 'direction correlation');
   return fig;
 }
 
@@ -3521,9 +3757,11 @@ function renderDiagnostics(A) {
   if (!om.length && !dth.length) { host.innerHTML = '<div class="empty">No headings could be computed — check Δt and the minimum-step setting.</div>'; return; }
   const grid = el('div', { class: 'figgrid' });
   grid.appendChild(figCard('diag_turning_rate', magHistFig('Distribution of |turning rate|', om, c.omegaThr,
-    `|ω| (deg ${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`, '#2a6df4'), 'Method A — samples to the right of the dashed line are flagged'));
+    `|ω| (deg ${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`, '#2a6df4'), 'Method A — samples to the right of the dashed line are flagged',
+    { wide: wideFromValues('turning_rate_samples', 'abs turning rate (deg per ' + (c.tUnit === 's' ? 's' : 'frame') + ')', om) }));
   grid.appendChild(figCard('diag_heading_change', magHistFig('Distribution of |heading change|', dth, c.angThr,
-    '|Δθ| (deg)', '#12a67a'), 'Method B — samples to the right of the dashed line are flagged'));
+    '|Δθ| (deg)', '#12a67a'), 'Method B — samples to the right of the dashed line are flagged',
+    { wide: wideFromValues('heading_change_samples', 'abs heading change (deg)', dth) }));
 
   // sensitivity curves
   const gridA = [], gridB = [];
@@ -3541,10 +3779,12 @@ function renderDiagnostics(A) {
     return [t, rateOf(n / (cd.used.length || 1), dur / (cd.used.length || 1), c)]; }) }));
   grid.appendChild(figCard('diag_sensitivity_A', curveFig('Method A — detected rate vs threshold', perA,
     `turning-rate threshold (deg ${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`, rateLabel(c), [{ v: c.omegaThr, label: 'current' }]),
-    'A plateau means the count is insensitive to the exact threshold — that is where you want to sit'));
+    'A plateau means the count is insensitive to the exact threshold — that is where you want to sit',
+    { wide: wideFromPts('method_A_threshold_sweep', perA, 'turning-rate threshold (deg)', 'detected rate') }));
   grid.appendChild(figCard('diag_sensitivity_B', curveFig('Method B — detected rate vs threshold', perB,
     'heading-change threshold (deg)', rateLabel(c), [{ v: c.angThr, label: 'current' }]),
-    'Same check for the angle detector'));
+    'Same check for the angle detector',
+    { wide: wideFromPts('method_B_threshold_sweep', perB, 'heading-change threshold (deg)', 'detected rate') }));
   const bends = [];
   A.conds.forEach(cd => cd.used.forEach(w => { if (w.bendRatio) for (let i = 0; i < w.bendRatio.length; i++) bends.push(w.bendRatio[i]); }));
   if (bends.length && c.useC) grid.appendChild(figCard('diag_body_bend',
@@ -3604,6 +3844,8 @@ function renderTracks(A) {
       const nA = cd.used.reduce((s, w) => s + w.evA.length, 0), nB = cd.used.reduce((s, w) => s + w.evB.length, 0),
         nC = cd.used.reduce((s, w) => s + w.evC.length, 0);
       const fig = trackFig(cd.name, trs, [xd, yd], { ...opt, trackOp: .8, lw: 1.1, source: srcMark(cd) });
+      fig.wideData = wideFromTracks('track_' + safeName(cd.name),
+        cd.used.map(w => ({ cond: cd.name, w, ev: c.primary === 'C' ? w.evC : c.primary === 'B' ? w.evB : w.evA })));
       grid.appendChild(figCard('track_' + cd.id, fig,
         `${cd.used.length} worms · ${nA} method-A · ${nB} method-B${nC ? ` · ${nC} method-C` : ''} reorientations`,
         { axisZoom: true, condId: cd.id })); });
@@ -3611,6 +3853,8 @@ function renderTracks(A) {
     A.conds.forEach(cd => cd.used.forEach(w => {
       const color = colorMode === 'gray' ? '#8b93a1' : cd.color;
       const fig = trackFig(`${cd.name} — worm ${w.id}`, [mkTrack(w, color)], [xd, yd], { ...opt, trackOp: .95, lw: 1.3, source: srcMark(cd) });
+      fig.wideData = wideFromTracks(`track_${safeName(cd.name)}_worm_${w.id}`,
+        [{ cond: cd.name, w, ev: c.primary === 'C' ? w.evC : c.primary === 'B' ? w.evB : w.evA }]);
       grid.appendChild(figCard(`track_${cd.id}_${w.id}`, fig,
         `${w.evA.length} A · ${w.evB.length} B${w.hasCL ? ` · ${w.evC.length} C (${w.nRev} reversals, ${w.nOmega} omega)` : ''}`,
         { axisZoom: true, condId: cd.id })); }));
@@ -3655,7 +3899,7 @@ function renderMetric(A, which) {
     const groups = replicates(field);
     if (!groups.length) return null;
     const st = statsFor(groups);
-    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption));
+    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption, { wide: wideFromGroups(key, groups) }));
     blocks.push({ title, st });
     ST.tables[key + '_group_summary'] = { name: key + '_group_summary',
       rows: [['Condition', 'n', 'Mean', 'SD', 'SEM', 'Median', 'Q1', 'Q3'],
@@ -3705,10 +3949,11 @@ function renderMetric(A, which) {
     panel('speed', sm === 'run' ? 'Run speed (turns excluded)' : sm === 'median' ? 'Median speed' : 'Mean speed',
       r => sm === 'run' ? r.runSpeed : sm === 'median' ? r.medSpeed : r.meanSpeed, speedLabel(c),
       `Points are individual ${c.nUnit === 'file' ? 'plates' : 'worms'}`);
-    grid.appendChild(figCard('speed_distribution',
-      distFig('Distribution of instantaneous speed', A.conds.map(cd => ({ name: cd.name, color: cd.color,
-        values: cd.used.flatMap(w => w.speedSeries.filter(v => v != null)) })).filter(g => g.values.length),
-        speedLabel(c), 'ecdf'), 'Every Δt sample pooled within a condition'));
+    { const spdG = A.conds.map(cd => ({ name: cd.name, color: cd.color,
+        values: cd.used.flatMap(w => w.speedSeries.filter(v => v != null)) })).filter(g => g.values.length);
+      grid.appendChild(figCard('speed_distribution',
+        distFig('Distribution of instantaneous speed', spdG, speedLabel(c), 'ecdf'),
+        'Every Δt sample pooled within a condition', { wide: wideFromGroups('speed_distribution_samples', spdG) })); }
     const dm = $('distMeasure').value;
     if (dm !== 'net') panel('total_distance', 'Total distance travelled', r => r.path, `total path length (${c.sUnit})`,
       'The full length of the path each animal crawled over the whole recording');
@@ -3727,7 +3972,8 @@ function renderMetric(A, which) {
         return { name: cd.name, color: cd.color, pts, band }; }).filter(Boolean);
       if (ser.length) grid.appendChild(figCard('msd', logCurveFig('Mean squared displacement', ser,
         `lag (${c.tUnit})`, `MSD (${c.sUnit}²)`, 'mean ± SEM across replicates'),
-        'Slope 1 on these axes is an ordinary random walk; slope 2 is straight-line travel. The shoulder marks where reorientations start to randomise direction.'));
+        'Slope 1 on these axes is an ordinary random walk; slope 2 is straight-line travel. The shoulder marks where reorientations start to randomise direction.',
+        { wide: wideFromPts('msd', ser, `lag (${c.tUnit})`, `MSD (${c.sUnit}^2)`) }));
       panel('msd_exponent', 'MSD exponent α', r => r.msdAlpha, 'α (slope on log–log axes)',
         'Fitted over the first half of the lag range. α ≈ 2 ballistic, α ≈ 1 diffusive, α < 1 sub-diffusive.');
       panel('msd_diffusion', 'Effective diffusion coefficient', r => r.msdD, `D (${c.sUnit}²·${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`,
@@ -3745,15 +3991,18 @@ function renderMetric(A, which) {
     panel('run_duration', `Run duration (method ${P})`,
       r => { const a = evOf(r); return a ? agg(a.map(o => o.t)) : NaN; }, `run duration (${c.tUnit})`,
       `${lab} time between consecutive reorientations, one point per ${c.nUnit === 'file' ? 'plate' : 'worm'}`);
+    const runDurG = pooledBy(r => (evOf(r) || []).map(o => o.t));
     grid.appendChild(figCard('run_duration_distribution',
-      distFig('Distribution of run durations', pooledBy(r => (evOf(r) || []).map(o => o.t)), `run duration (${c.tUnit})`, $('iriDist').value),
-      'Every run pooled within a condition. On a cumulative plot a straight-ish rise means a constant turning hazard; a shoulder means runs cluster at a preferred length.'));
+      distFig('Distribution of run durations', runDurG, `run duration (${c.tUnit})`, $('iriDist').value),
+      'Every run pooled within a condition. On a cumulative plot a straight-ish rise means a constant turning hazard; a shoulder means runs cluster at a preferred length.',
+      { wide: wideFromGroups('run_durations_pooled', runDurG) }));
     panel('run_distance', `Run distance (method ${P})`,
       r => { const a = evOf(r); return a ? agg(a.map(o => o.d)) : NaN; }, `run distance (${c.sUnit})`,
       `${lab} path length covered between consecutive reorientations`);
+    const runDistG = pooledBy(r => (evOf(r) || []).map(o => o.d));
     grid.appendChild(figCard('run_distance_distribution',
-      distFig('Distribution of run distances', pooledBy(r => (evOf(r) || []).map(o => o.d)), `run distance (${c.sUnit})`, $('iriDist').value),
-      'Every run pooled within a condition'));
+      distFig('Distribution of run distances', runDistG, `run distance (${c.sUnit})`, $('iriDist').value),
+      'Every run pooled within a condition', { wide: wideFromGroups('run_distances_pooled', runDistG) }));
     if ($('iriSpeed').checked) panel('run_mean_speed', 'Mean speed within a run',
       r => { const a = evOf(r); return a ? agg(a.filter(o => o.t > 0).map(o => o.d / o.t)) : NaN; }, speedLabel(c),
       'Run distance divided by run duration — speed during forward travel only');
@@ -3876,10 +4125,12 @@ function renderTimeCourse(A) {
     let lo = 0, hi = maxOf(series.flatMap(s => s.bins.map(b => (b.mean || 0) + (b.sem || 0))).filter(isFinite));
     series.forEach(s => grid.appendChild(figCard('timecourse_' + safeName(s.name),
       timeCourseFig(`${mname} — ${s.name}`, [s], `time (${c.tUnit})`, ylab, mode, [lo, hi]),
-      `${fmt(bin)} ${c.tUnit} bins · mean ± SEM across ${c.nUnit === 'file' ? 'plates' : 'worms'}`)));
+      `${fmt(bin)} ${c.tUnit} bins · mean ± SEM across ${c.nUnit === 'file' ? 'plates' : 'worms'}`,
+      { wide: wideFromSeries('timecourse_' + safeName(s.name), [s], `time (${c.tUnit})`) })));
   } else {
     grid.appendChild(figCard('timecourse', timeCourseFig(title, series, `time (${c.tUnit})`, ylab, mode, null),
-      `Bars/points are the mean across ${c.nUnit === 'file' ? 'plates' : 'worms'} with SEM; every replicate contributes one value per bin.`));
+      `Bars/points are the mean across ${c.nUnit === 'file' ? 'plates' : 'worms'} with SEM; every replicate contributes one value per bin.`,
+      { wide: wideFromSeries('timecourse', series, `time (${c.tUnit})`) }));
   }
   host.appendChild(grid);
 
@@ -3991,7 +4242,7 @@ function renderNav(A) {
     const groups = replicates(field); if (!groups.length) return;
     groups.forEach(g => { if (noGradIds.has(g.id)) g.note = 'no gradient'; });
     const st = statsFor(groups);
-    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption));
+    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption, { wide: wideFromGroups(key, groups) }));
     blocks.push({ title, st });
     groups.forEach(g => { const t = S.oneSampleT(g.values), w = S.signedRank(g.values);
       zeroRows.push({ metric: title, name: g.name, noGrad: noGradIds.has(g.id), n: g.values.length,
@@ -4009,7 +4260,8 @@ function renderNav(A) {
     return { name: cd.name, color: cd.color, bins, dash: cd.grad === 'no' ? '5,4' : null }; });
   grid.appendChild(figCard('bearing_turn_rate',
     timeCourseFig('Reorientation rate vs bearing to the source', rateSeries, 'bearing to source, cos θ  (+1 = heading at it)', rateLabel(c), 'line', null),
-    'Kramer et al. 2026: bearing is cos θ, the angle between the direction of travel and the direction to the odour. A downward slope means the animal suppresses turning while it is heading the right way — the biased random walk. Dashed lines are no-gradient controls and should be flat.'));
+    'Kramer et al. 2026: bearing is cos θ, the angle between the direction of travel and the direction to the odour. A downward slope means the animal suppresses turning while it is heading the right way — the biased random walk. Dashed lines are no-gradient controls and should be flat.',
+    { wide: wideFromSeries('bearing_turn_rate', rateSeries, 'cos theta') }));
   panel('bearing_slope', 'Turn-rate vs bearing slope', r => r.navSlope, `slope (${rateLabel(c)} per unit cos θ)`,
     'One regression slope per replicate. Negative = fewer reorientations when heading toward the source. Zero means no bias.');
 
@@ -4023,7 +4275,8 @@ function renderNav(A) {
   grid.appendChild(figCard('weathervaning_curve',
     timeCourseFig('Weathervaning — curving rate vs bearing', wvSeries, 'signed bearing β (deg, 0 = heading at the source)',
       `curving rate (deg·${c.tUnit === 's' ? 's' : 'frame'}⁻¹, + = turning toward)`, 'line', null),
-    'Measured during runs only, with reorientations excluded. A positive slope through the origin means the animal steers gradually toward the source while it crawls — a mechanism separate from turning.'));
+    'Measured during runs only, with reorientations excluded. A positive slope through the origin means the animal steers gradually toward the source while it crawls — a mechanism separate from turning.',
+    { wide: wideFromSeries('weathervaning_curve', wvSeries, 'signed bearing beta (deg)') }));
   panel('weathervaning_slope', 'Weathervaning slope', r => r.wvSlope, `curving rate per degree of bearing (${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`,
     'One regression slope per replicate. Positive = gradual steering toward the source.');
 
@@ -4090,7 +4343,7 @@ function renderRoam(A) {
   const panel = (key, title, field, ylab, caption) => {
     const groups = replicates(field); if (!groups.length) return;
     const st = statsFor(groups);
-    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption));
+    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption, { wide: wideFromGroups(key, groups) }));
     blocks.push({ title, st });
     ST.tables[key + '_group_summary'] = { name: key + '_group_summary',
       rows: [['Condition', 'n', 'Mean', 'SD', 'SEM', 'Median'],
@@ -4102,11 +4355,15 @@ function renderRoam(A) {
     scatterFig('State space — each point is one time bin', scat,
       `angular speed (deg·${c.tUnit === 's' ? 's' : 'frame'}⁻¹)`, speedLabel(c),
       { line: x => Math.pow(10, A.roamThr) * (x + 1e-3), r: 1.8 }),
-    'Two clouds: fast and straight (roaming, coloured) versus slow and highly curved (dwelling, grey). The dashed line is the current threshold — drag the slider until it sits in the gap between them.'));
+    'Two clouds: fast and straight (roaming, coloured) versus slow and highly curved (dwelling, grey). The dashed line is the current threshold — drag the slider until it sits in the gap between them.',
+    { wide: { name: 'roaming_state_space_bins',
+      rows: [['Condition', 'angular speed', 'speed', 'roaming'],
+        ...scat.flatMap(g => g.pts.map(p => [g.name, p[0], p[1], p[2] ? 'yes' : 'no']))] } }));
   const ratios = ws.flatMap(w => w.states.bins.map(b => b.ratio)).filter(v => v != null && isFinite(v));
   grid.appendChild(figCard('roaming_threshold',
     magHistFig('Distribution of log₁₀(speed ÷ angular speed)', ratios, A.roamThr, 'log₁₀ ratio', '#2a6df4', true),
-    'A clear valley between two humps means the two states are well separated in your data. One smooth hump means the split is arbitrary — report it with care.'));
+    'A clear valley between two humps means the two states are well separated in your data. One smooth hump means the split is arbitrary — report it with care.',
+    { wide: wideFromValues('roaming_ratio_samples', 'log10(speed / angular speed)', ratios) }));
   panel('fraction_roaming', 'Fraction of time roaming', r => r.fracRoam, 'fraction of time bins',
     'The headline number: 0 = always dwelling, 1 = always roaming.');
   panel('roaming_bout_duration', 'Roaming bout duration', r => r.roamBout, `bout duration (${c.tUnit})`, 'Mean length of an uninterrupted roaming stretch');
@@ -4137,7 +4394,7 @@ function renderSaltModel() {
   if (sc.model === 'drops' && !sc.drops.length) {
     host.innerHTML = '<div class="empty">Give at least one drop a volume and an age.</div>'; return; }
   const grid = el('div', { class: 'figgrid' });
-  grid.appendChild(figCard('salt_field_preview', plateFieldFig(sc, scale),
+  grid.appendChild(figCard('salt_field_preview', Object.assign(plateFieldFig(sc, scale), { wideData: plateFieldGrid(sc) }),
     'The modelled field on an empty plate. The dashed red ring is where the animals are usually placed; the red marker is the drop. Contours are labelled in mM.'));
 
   const d = sc.plateDia, pts = [];
@@ -4146,7 +4403,8 @@ function renderSaltModel() {
     curveFig('Concentration vs distance from the drop', [{ name: 'modelled concentration', color: '#2a6df4', pts }],
       'distance from the drop (mm)', 'C (mM)',
       sc.ring > 0 ? [{ v: sc.ring, label: `worm ring ${fmt(sc.ring, 3)} mm`, color: '#d1495b' }] : []),
-    'This single curve is the whole model: everything else in the app is this function evaluated at each position of each animal.'));
+    'This single curve is the whole model: everything else in the app is this function evaluated at each position of each animal.',
+    { wide: wideFromPts('salt_profile_radial', [{ name: 'C (mM)', pts }], 'distance from the drop (mm)') }));
 
   const spotY = sc.spot === 'centre' ? d / 2 : sc.spot === 'edge' ? d * .1 : d / 4;
   const line = [];
@@ -4155,7 +4413,8 @@ function renderSaltModel() {
     curveFig('Concentration along the plate centre line', [{ name: 'centre line', color: '#127a4a', pts: line }],
       'position along the centre line (mm)', 'C (mM)',
       [{ v: spotY, label: 'drop', color: '#d1495b' }, { v: d / 2, label: 'plate centre', color: '#8b93a1' }]),
-    'The same slice the simulation notebook plots, so the two can be compared directly.'));
+    'The same slice the simulation notebook plots, so the two can be compared directly.',
+    { wide: wideFromPts('salt_profile_centreline', [{ name: 'C (mM)', pts: line }], 'position along the centre line (mm)') }));
 
   if (sc.drops.length > 1) {
     const series = sc.drops.map((dr, i) => ({ name: `drop ${dr.n}: ${fmt(dr.vol, 3)} µL, ${fmt(dr.hours, 3)} h`,
@@ -4165,7 +4424,8 @@ function renderSaltModel() {
         return [rmm, 1e6 * N / Math.sqrt(4 * Math.PI * h * sc.D * t) * Math.exp(-Math.pow(rmm / 10, 2) / (4 * sc.D * t))]; }) }));
     if (sc.model === 'drops') grid.appendChild(figCard('salt_profile_per_drop',
       curveFig('Contribution of each drop', series, 'distance from the drop (mm)', 'added C (mM)', []),
-      'An old drop has spread wide and flat; a recent one is a narrow spike. The field the animal feels is the sum, plus the salt already in the agar.'));
+      'An old drop has spread wide and flat; a recent one is a narrow spike. The field the animal feels is the sum, plus the salt already in the agar.',
+      { wide: wideFromPts('salt_profile_per_drop', series, 'distance from the drop (mm)', 'added C (mM)') }));
   }
   host.appendChild(grid);
   ST.tables['salt_model_profile'] = { name: 'salt_model_profile',
@@ -4289,7 +4549,7 @@ function renderSalt(A) {
     const groups = replicates(field); if (!groups.length) return;
     groups.forEach(g => { if (noGradIds.has(g.id)) g.note = 'no gradient'; });
     const st = statsFor(groups);
-    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption));
+    grid.appendChild(figCard(key, dotFig(title, groups, ylab, st, { errBar: c.errBar, h: 300, bars: c.barsOn, yMode: c.yAxisMode }), caption, { wide: wideFromGroups(key, groups) }));
     blocks.push({ title, st });
     groups.forEach(g => { const t = S.oneSampleT(g.values), wx = S.signedRank(g.values);
       zeroRows.push({ metric: title, name: g.name, noGrad: noGradIds.has(g.id), n: g.values.length,
@@ -4322,10 +4582,23 @@ function renderSalt(A) {
     grid.appendChild(figCard('salt_rate_vs_' + v.key,
       timeCourseFig(v.title(sc, c), series, v.xlab(sc, c), rateLabel(c), 'line', null),
       v.cap + ' ' + binNote + ' Dashed lines are no-gradient controls: the same calculation against the position the drop would have occupied, which should come out flat.' +
-      (v.f === 'C' ? ' Read this one with care: concentration is a one-to-one function of distance from the drop, so this plot is also a map of where the animal turned, and the no-gradient control — whose concentrations are pure geometry — is what separates the two readings.' : '')));
+      (v.f === 'C' ? ' Read this one with care: concentration is a one-to-one function of distance from the drop, so this plot is also a map of where the animal turned, and the no-gradient control — whose concentrations are pure geometry — is what separates the two readings.' : ''),
+      { wide: wideFromSeries('salt_rate_vs_' + v.key, series, v.xlab(sc, c)) }));
     panel('salt_slope_' + v.key, v.title(sc, c).replace('Reorientation rate vs', 'Slope:'),
       r => r['saltSlope_' + v.f], `${rateLabel(c)} per unit of x`,
       'One regression slope per replicate, fitted across the bins above. Negative means the animal turns less as the salt it is experiencing rises.');
+    if ($('saltTrimFig').checked) {
+      const nOut = pooled.filter(x => x < edges[0] || x > edges[edges.length - 1]).length;
+      grid.appendChild(figCard('salt_binning_' + v.key,
+        trimFig(v.xlab(sc, c).replace(/^./, m => m.toUpperCase()) + ' — what the bins cover',
+          pooled, edges, sc, v.xlab(sc, c), '#2a6df4'),
+        sc.binMode === 'count'
+          ? 'Equal-count binning: the lines are the bin edges, placed so every bin holds the same number of samples. Nothing is discarded, which is why no part of the histogram is red.'
+          : `Every pooled sample of this variable. Blue is inside the bins and contributes to the curve above; red is outside the trimmed range and is left out of the plot entirely — ${nOut} of ${pooled.length} samples (${(100 * nOut / pooled.length).toFixed(1)}%), their time and their reorientations both. Set Trim to 0 to keep them, or switch to equal-count binning.`,
+        { wide: { name: 'salt_binning_' + v.key + '_samples',
+          rows: [[v.xlab(sc, c), 'inside the bins'],
+            ...pooled.map(x => [x, (x >= edges[0] && x <= edges[edges.length - 1]) ? 'yes' : 'no'])] } }));
+    }
   });
   host.appendChild(grid);
 
@@ -4429,22 +4702,27 @@ function renderGradMap(A) {
     const trs = A.conds.flatMap(cd => cd.used.map(w => mkTrack(w, cd.color)));
     grid.appendChild(figCard('gradient_map_all', fieldTrackFig('All conditions on the salt field', trs, [xd, yd],
       { ...base, source: spot, note, legend: A.conds.filter(cd => cd.used.length).map(cd => ({ label: cd.name, color: cd.color })) }),
-      'Every track on one plate. The shading is the modelled salt field; darker is more salt.'));
+      'Every track on one plate. The shading is the modelled salt field; darker is more salt.',
+      { wide: wideFromTracks('gradient_map_all_tracks',
+          A.conds.flatMap(cd => cd.used.map(w => ({ cond: cd.name, w, ev: evOf(w) })))) }));
     if ($('gmReo').checked) { const ws = A.conds.flatMap(cd => cd.used);
       const marks = A.conds.filter(cd => cd.used.length).map(cd => mkMarksOnly(cd.used, cd.color));
       reoPanels.push(figCard('reorientations_on_field_all',
         fieldTrackFig('Reorientations on the salt field — all conditions', marks, [xd, yd],
           { ...base, source: spot, note, markers: markerFor('#d1495b'), halo: false,
             legend: A.conds.filter(cd => cd.used.length).map(cd => ({ label: cd.name, marker: { ...M[c.primary], color: cd.color } })) }),
-        reoCap(ws))); }
+        reoCap(ws), { wide: wideFromEventList('reorientations_on_field_all',
+          A.conds.flatMap(cd => cd.used.map(w => ({ cond: cd.name, w, ev: evOf(w) })))) })); }
   } else if (layout === 'worm') {
     A.conds.forEach(cd => { const spot = spots.get(cd.id); if (!spot) return;
       if ($('gmReo').checked) reoPanels.push(figCard('reorientations_on_field_' + cd.id,
         fieldTrackFig(cd.name + ' — reorientations on the salt field', [mkMarksOnly(cd.used, cd.color)], [xd, yd],
           { ...base, source: spot, note, markers: markerFor(cd.color), halo: false }),
-        reoCap(cd.used)));
+        reoCap(cd.used), { wide: wideFromEventList('reorientations_on_field_' + safeName(cd.name),
+          cd.used.map(w => ({ cond: cd.name, w, ev: evOf(w) }))) }));
       cd.used.forEach(w => grid.appendChild(figCard(`gradient_map_${cd.id}_${w.id}`,
-        fieldTrackFig(`${cd.name} — worm ${w.id} on the salt field`, [mkTrack(w, cd.color)], [xd, yd], { ...base, source: spot, note }),
+        Object.assign(fieldTrackFig(`${cd.name} — worm ${w.id} on the salt field`, [mkTrack(w, cd.color)], [xd, yd], { ...base, source: spot, note }),
+          { wideData: wideFromTracks(`gradient_map_${safeName(cd.name)}_worm_${w.id}`, [{ cond: cd.name, w, ev: evOf(w) }]) }),
         w.salt ? `mean ${fmt(w.salt.meanC, 3)} mM · ${fmt(w.salt.startC, 3)} → ${fmt(w.salt.endC, 3)} mM · closest approach ${fmt(w.salt.minR, 3)} mm` : ''))); });
   } else {
     A.conds.forEach(cd => { if (!cd.used.length) return;
@@ -4452,15 +4730,19 @@ function renderGradMap(A) {
       const trs = cd.used.map(w => mkTrack(w, cd.color));
       const mc = cd.used.map(w => w.salt ? w.salt.meanC : NaN).filter(isFinite);
       grid.appendChild(figCard('gradient_map_' + cd.id,
-        fieldTrackFig(cd.name + ' on the salt field' + (cd.grad === 'no' && !/no.?gradient/i.test(cd.name) ? ' (no gradient)' : ''), trs, [xd, yd], { ...base, source: spot, note }),
+        fieldTrackFig(cd.name + ' on the salt field' + (cd.grad === 'no' && !/no.?gradient/i.test(cd.name) ? ' (no gradient)' : ''), trs, [xd, yd],
+          { ...base, source: spot, note, wideData: null }),
         `${cd.used.length} worms` + (mc.length ? ` · mean salt experienced ${fmt(S.mean(mc), 3)} mM` : '') +
-        (cd.grad === 'no' ? ' · this plate had no gradient; the field shown is where it would have been' : ''))); });
+        (cd.grad === 'no' ? ' · this plate had no gradient; the field shown is where it would have been' : ''),
+        { wide: wideFromTracks('gradient_map_' + safeName(cd.name),
+            cd.used.map(w => ({ cond: cd.name, w, ev: evOf(w) }))) })); });
     if ($('gmReo').checked) A.conds.forEach(cd => { if (!cd.used.length) return;
       const spot = spots.get(cd.id); if (!spot) return;
       reoPanels.push(figCard('reorientations_on_field_' + cd.id,
         fieldTrackFig(cd.name + ' — reorientations on the salt field', [mkMarksOnly(cd.used, cd.color)], [xd, yd],
           { ...base, source: spot, note, markers: markerFor(cd.color), halo: false }),
-        reoCap(cd.used))); });
+        reoCap(cd.used), { wide: wideFromEventList('reorientations_on_field_' + safeName(cd.name),
+          cd.used.map(w => ({ cond: cd.name, w, ev: evOf(w) }))) })); });
   }
   host.appendChild(grid);
   if (reoPanels.length) { const g2 = el('div', { class: 'figgrid' });
@@ -4608,15 +4890,15 @@ function saltStandalonePy(sc) {
 }
 
 function renderSaltCode() {
-  const sc = saltCfg(), host = $('saltCodeBody');
+  const sc = saltCfg(), host = $('saltCodeCard');
   const h = agarHeight(sc);
   const js = [saltCfg, agarHeight, saltAt, saltRadiusAt, addSalt, saltRateBins, saltEdges, saltEdgesWidth]
     .map(f => f.toString()).join('\n\n');
   const vals = [[0, null], [5, null], [10, null], [12.5, null], [20, null], [25, null], [40, null]]
     .map(([mm]) => [mm, saltAt(mm / 10, sc, 0)]);
   host.innerHTML = `
-    <div class="card">
-      <h3>The formula</h3>
+    <div>
+      <h3 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);margin-bottom:12px">The salt gradient, in code</h3>
       <div class="eq">C(r) = C_background + Σ_drops  1e6 · N / √(4·π·h·D·t) · exp( −r² / (4·D·t) )
 
   N = (stock_mM / 1000) · (volume_µL / 1e6)      moles of NaCl in the drop
@@ -4629,32 +4911,154 @@ function renderSaltCode() {
         ${vals.map(v => `<tr><td class="n">${fmt(v[0], 4)}</td><td class="n">${fmt(v[1], 5)}</td></tr>`).join('')}
       </tbody></table>
       <div class="row" style="margin-top:12px">
-        <button class="btn" id="saltPyBtn">Download a standalone Python file</button>
+        <button class="btn pri" id="saltPyBtn">Download the model as Python</button>
+        <button class="btn" id="saltJsBtn">Download the JavaScript</button>
+        <button class="btn" id="saltNbBtn">Download the notebook Python</button>
         <button class="btn" id="saltCopyBtn">Copy the JavaScript</button>
-        <span style="font-size:11.5px;color:var(--ink-3)">The Python reproduces these numbers exactly — useful as a check, and as a citation of what was computed.</span>
       </div>
-    </div>
-    <div class="card">
-      <h3>The JavaScript this app just ran</h3>
-      <div class="note" style="margin-top:0">Read straight out of the running functions, so it cannot drift from what produced your figures.</div>
-      <pre class="code">${escXml(js)}</pre>
-    </div>
-    <div class="card">
-      <h3>The Python it was built to match</h3>
-      <div class="note" style="margin-top:0">The lab's simulation notebook. Note the normalisation √(4πhDt) — the app uses the same one, deliberately, so the two agree digit for digit.</div>
-      <pre class="code">${escXml(SALT_PY_NOTEBOOK)}</pre>
-    </div>
-    <div class="card">
-      <h3>Standalone Python, with your current settings baked in</h3>
-      <pre class="code">${escXml(saltStandalonePy(sc))}</pre>
+      <div class="note">The Python file has your current parameters written into it and reproduces the numbers above exactly — useful as a check, and as the thing to cite or deposit when you publish.</div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;font-weight:600;color:var(--ink-2)">Read the code here instead</summary>
+        <h4 style="font-size:12.5px;margin:14px 0 4px">The JavaScript this app just ran</h4>
+        <div class="note" style="margin-top:0">Read straight out of the running functions, so it cannot drift from what produced your figures.</div>
+        <pre class="code">${escXml(js)}</pre>
+        <h4 style="font-size:12.5px;margin:16px 0 4px">The Python it was built to match</h4>
+        <div class="note" style="margin-top:0">The lab's simulation notebook. Note the normalisation √(4πhDt) — the app uses the same one, deliberately, so the two agree digit for digit.</div>
+        <pre class="code">${escXml(SALT_PY_NOTEBOOK)}</pre>
+        <h4 style="font-size:12.5px;margin:16px 0 4px">Standalone Python, with your current settings baked in</h4>
+        <pre class="code">${escXml(saltStandalonePy(sc))}</pre>
+      </details>
     </div>`;
   $('saltPyBtn').onclick = () => saveBlob(new Blob([saltStandalonePy(sc)], { type: 'text/x-python' }), 'salt_gradient_model.py');
+  $('saltJsBtn').onclick = () => saveBlob(new Blob([js], { type: 'text/javascript' }), 'salt_gradient_model.js');
+  $('saltNbBtn').onclick = () => saveBlob(new Blob([SALT_PY_NOTEBOOK], { type: 'text/x-python' }), 'salt_gradient_notebook_excerpt.py');
   $('saltCopyBtn').onclick = async () => { try { await navigator.clipboard.writeText(js); $('saltCopyBtn').textContent = 'Copied'; setTimeout(() => $('saltCopyBtn').textContent = 'Copy the JavaScript', 1400); } catch (e) { alert('Copy failed: ' + e.message); } };
 }
 
+/* ============================================================================
+   wide-format export — one table per graph, laid out the way GraphPad Prism
+   wants it pasted, and the way a journal wants raw data supplied.
+
+   Two shapes come out of it:
+     column/   one column per condition, one row per replicate  (Prism "Column")
+     xy/       X down the first column, then Mean / SEM / N per condition
+               (Prism "XY" with "Mean, SD/SEM, N" entry)
+   Everything is derived from the same tables the app already shows, so the wide
+   files cannot disagree with the long ones.
+   ========================================================================== */
+const PRISM_ID_COLS = /^(condition|gradient|file|worm|method|censored|reason|test|measure|x-axis|depends)/i;
+
+function prismTables() {
+  const out = [];
+  const T = ST.tables || {};
+  const low = s => String(s).trim().toLowerCase();
+  const isNum = v => typeof v === 'number' && isFinite(v);
+
+  /* ---------- XY: anything binned ---------- */
+  const fams = new Map();
+  Object.keys(T).forEach(key => {
+    const rows = T[key].rows; if (!rows || rows.length < 2) return;
+    const h = rows[0];
+    const ci = h.findIndex(x => low(x) === 'condition');
+    const fi = h.findIndex(x => /(^|\s)from(\s|$)|bin start/i.test(String(x)));
+    const ti = h.findIndex(x => /(^|\s)to(\s|$)|bin end/i.test(String(x)));
+    const mi = h.findIndex(x => /^mean/i.test(String(x)));
+    if (ci < 0 || fi < 0 || ti < 0 || mi < 0) return;
+    const si = h.findIndex(x => /^sem$/i.test(String(x)));
+    const ni = h.findIndex(x => /^(n|replicates)$/i.test(String(x)));
+    const fam = key.replace(/_bins_.*$/, '_bins');
+    let xlab = String(h[fi]).replace(/\s*from\s*/i, '').replace(/bin start/i, '').trim();
+    if (!xlab || /^\(.*\)$/.test(xlab)) xlab = fam.replace(/_bins$/, '').replace(/_/g, ' ') + ' ' + xlab;
+    if (!fams.has(fam)) fams.set(fam, { xlab: xlab.trim(), ylab: String(h[mi]), entries: [] });
+    const F = fams.get(fam);
+    for (let r = 1; r < rows.length; r++) { const row = rows[r];
+      const a = Number(row[fi]), b = Number(row[ti]);
+      if (!isFinite(a) || !isFinite(b)) continue;
+      F.entries.push({ cond: String(row[ci]), x: (a + b) / 2, lo: a, hi: b,
+        mean: row[mi], sem: si >= 0 ? row[si] : '', n: ni >= 0 ? row[ni] : '' }); }
+  });
+  fams.forEach((F, fam) => {
+    if (!F.entries.length) return;
+    const conds = [...new Set(F.entries.map(e => e.cond))];
+    const xs = [...new Set(F.entries.map(e => e.x))].sort((a, b) => a - b);
+    const head = [`X — ${F.xlab} (bin centre)`, 'bin from', 'bin to'];
+    conds.forEach(c => head.push(`${c} — mean`, `${c} — SEM`, `${c} — N`));
+    const body = xs.map(x => {
+      const any = F.entries.find(e => e.x === x);
+      const r = [x, any ? any.lo : '', any ? any.hi : ''];
+      conds.forEach(c => { const e = F.entries.find(q => q.cond === c && q.x === x);
+        r.push(e ? e.mean : '', e ? e.sem : '', e ? e.n : ''); });
+      return r; });
+    out.push({ dir: 'xy', name: fam, note: F.ylab, rows: [head, ...body] });
+  });
+
+  /* a two-column curve with no conditions (the modelled salt profile) is already XY */
+  if (T.salt_model_profile) out.push({ dir: 'xy', name: 'salt_model_profile',
+    note: 'modelled concentration', rows: T.salt_model_profile.rows });
+
+  /* ---------- column: one value per replicate ---------- */
+  Object.keys(T).forEach(key => {
+    const rows = T[key].rows; if (!rows || rows.length < 2) return;
+    const h = rows[0];
+    const ci = h.findIndex(x => low(x) === 'condition');
+    if (ci < 0) return;
+    if (!h.some(x => /^(file|worm)$/i.test(String(x)))) return;      // per-replicate tables only
+    h.forEach((col, j) => {
+      if (j === ci || PRISM_ID_COLS.test(String(col))) return;
+      const by = new Map();
+      for (let r = 1; r < rows.length; r++) { const v = rows[r][j];
+        if (!isNum(v)) continue;
+        const k = String(rows[r][ci]);
+        if (!by.has(k)) by.set(k, []); by.get(k).push(v); }
+      if (!by.size) return;
+      const conds = [...by.keys()];
+      let maxN = 0; conds.forEach(c => { if (by.get(c).length > maxN) maxN = by.get(c).length; });
+      if (!maxN) return;
+      const body = [];
+      for (let i = 0; i < maxN; i++) body.push(conds.map(c => { const v = by.get(c)[i]; return v == null ? '' : v; }));
+      out.push({ dir: 'column', name: `${key}__${safeName(String(col))}`, note: String(col), rows: [conds, ...body] });
+    });
+  });
+  return out;
+}
+
+const PRISM_README = [
+  'WIDE-FORMAT DATA — ready to paste into GraphPad Prism, and ready to supply as raw data',
+  '',
+  'Every file here holds the same numbers as the matching file in csv/, rearranged so that',
+  'one file is one graph. The long-format csv/ files stay the better choice for scripting',
+  '(R, pandas); these are the better choice for pasting and for a supplementary data file.',
+  '',
+  'column/   One column per condition, one row per replicate. The first row is the',
+  '          condition names, so in Prism: New table -> Column, then Paste with',
+  '          "Transpose / first row is column titles" ticked (Edit > Paste Special).',
+  '          Blank cells at the bottom of a column simply mean that condition had',
+  '          fewer replicates; Prism ignores them.',
+  '',
+  'by_figure/ One file per figure, named after the figure and holding exactly what that',
+'          figure drew — the same file the CSV button under the plot gives you. Use',
+'          these when assembling a supplementary data file: figure name in, figure',
+'          data out, nothing to cross-reference.',
+'',
+'xy/       The X value (bin centre) down the first column, then three columns per',
+  '          condition: mean, SEM and N. In Prism: New table -> XY, with',
+  '          "Enter and plot error values: Mean, SD/SEM, N" and SEM selected.',
+  '          The "bin from" and "bin to" columns are there so the bin width is on',
+  '          the record; delete them before pasting if Prism should not see them.',
+  '',
+  'The replicate unit (one worm, or one plate) is whatever was set on the Analysis',
+  'settings tab when this archive was written; it is stated in README.txt at the top',
+  'level, and it is what "one row" means in every column/ file.',
+].join('\n');
+
 /* ---- export tab ---- */
 function renderExport() {
+  { const nf = allFigures().length;
+    $('allPdfHint').textContent = nf ? `${nf} pages — a cover page plus ${nf - 1} figures` : 'load data to enable'; }
   const cb = $('csvBtns'); cb.innerHTML = '';
+  { const nt = Object.keys(ST.tables).length, nw = prismTables().length;
+    $('csvPickSummary').textContent = nt
+      ? `Pick individual tables (${nt} long-format, ${nw} wide-format)`
+      : 'Pick individual tables'; }
   const keys = Object.keys(ST.tables);
   if (!keys.length) cb.appendChild(el('span', { style: 'font-size:12px;color:var(--ink-3)' }, 'Load data to enable exports.'));
   keys.forEach(k => { const t = ST.tables[k];
@@ -4682,10 +5086,21 @@ $('zipAll').onclick = async () => {
     const files = [];
     for (const k of Object.keys(ST.tables))
       files.push({ name: `csv/${safeName(ST.tables[k].name)}.csv`, data: enc(toCSV(ST.tables[k].rows)) });
+    for (const w of prismTables())
+      files.push({ name: `wide/${w.dir}/${safeName(w.name)}.csv`, data: enc(toCSV(w.rows)) });
+    { const used = new Set();
+      for (const k of Object.keys(ST.figWide || {})) for (const w of ST.figWide[k]) {
+        let base = safeName(w.figure || w.name), p = `wide/by_figure/${base}.csv`, i = 2;
+        while (used.has(p)) p = `wide/by_figure/${base}_${i++}.csv`;
+        used.add(p);
+        files.push({ name: p, data: enc(toCSV(w.rows)) }); } }
+    files.push({ name: 'wide/README.txt', data: enc(PRISM_README) });
     for (const k of Object.keys(ST.figs)) { const f = ST.figs[k], base = safeName(f.title || k);
       files.push({ name: `figures_svg/${base}.svg`, data: await blobBytes(figSVGBlob(f)) });
       files.push({ name: `figures_pdf/${base}.pdf`, data: await blobBytes(figPDFBlob(f)) });
       const p = await figPNGBlob(f); if (p) files.push({ name: `figures_png/${base}.png`, data: await blobBytes(p) }); }
+    { const all = allFigures();
+      if (all.length) files.push({ name: 'figures_pdf/ALL_figures.pdf', data: await blobBytes(figsPDFBlob(all)) }); }
     files.push({ name: 'analysis_settings.json', data: enc(JSON.stringify(settingsObj(), null, 2)) });
 
     /* The original uploads, filed under their condition, plus the manifest and project
@@ -4733,14 +5148,18 @@ $('zipAll').onclick = async () => {
       '',
       withSource ? 'TO REOPEN THIS PROJECT: drag this .zip straight back onto the app, or use "Open a'
                  : 'NOTE: the original data files were NOT included, so this archive cannot be reopened',
-      withSource ? 'project" on the Export tab. Every condition, file, colour, gradient setting and'
+      withSource ? 'project" on the Import and export tab. Every condition, file, colour, gradient and'
                  : 'as a project. Re-export with "Include the original uploaded files" ticked if you',
       withSource ? 'threshold comes back, and the numbers come out identical.'
                  : 'want a self-contained, reproducible archive.',
       '',
-      'csv/            every table shown in the app, one file each',
+      'csv/            every table shown in the app, one file each (long format)',
+      'wide/column/    one column per condition, one row per replicate — paste into Prism',
+      'wide/xy/        X, then mean / SEM / N per condition — paste into Prism as XY',
+      'wide/by_figure/ the numbers behind each figure, named after that figure',
+      'wide/README.txt how to paste each shape into Prism',
       'figures_svg/    vector figures (editable in Illustrator or Inkscape)',
-      'figures_pdf/    vector figures for LaTeX or Word',
+      'figures_pdf/    vector figures for LaTeX or Word, plus ALL_figures.pdf (every panel, one per page)',
       'figures_png/    high-resolution raster copies',
       withSource ? 'source_data/    the original uploaded files, filed by condition, with manifest.csv' : null,
       withSource ? 'project.json    machine-readable description of the whole project' : null,
@@ -4838,6 +5257,20 @@ async function openProjectZip(file) {
   if (problems.length) alert('Project opened, but some files had problems:\n' + problems.join('\n'));
   return true;
 }
+$('csvZip').onclick = () => { const keys = Object.keys(ST.tables);
+  if (!keys.length) { alert('Load some data first — there is nothing to export yet.'); return; }
+  const enc = t => new TextEncoder().encode(t);
+  const files = keys.map(k => ({ name: `csv/${safeName(ST.tables[k].name)}.csv`, data: enc(toCSV(ST.tables[k].rows)) }));
+  saveBlob(makeZip(files), 'worm_analysis_tables_' + new Date().toISOString().slice(0, 10) + '.zip'); };
+$('allPdf').onclick = () => { const all = allFigures();
+  if (!all.length) { alert('Load some data first — there are no figures to collect yet.'); return; }
+  saveBlob(figsPDFBlob(all), 'worm_analysis_figures_' + new Date().toISOString().slice(0, 10) + '.pdf'); };
+$('wideZip').onclick = () => { const w = prismTables();
+  if (!w.length) { alert('Load some data first — there is nothing to export yet.'); return; }
+  const enc = t => new TextEncoder().encode(t);
+  const files = w.map(t => ({ name: `wide/${t.dir}/${safeName(t.name)}.csv`, data: enc(toCSV(t.rows)) }));
+  files.push({ name: 'wide/README.txt', data: enc(PRISM_README) });
+  saveBlob(makeZip(files), 'worm_analysis_wide_' + new Date().toISOString().slice(0, 10) + '.zip'); };
 $('openProjBtn').onclick = () => $('openProj').click();
 $('openProj').onchange = async () => { const f = $('openProj').files[0]; if (f) await openProjectZip(f); $('openProj').value = ''; };
 
@@ -4961,7 +5394,7 @@ function renderMethods() {
 <p>The exponent α is fitted over the first half of the lag range, where there are the most independent samples; lags beyond ${fmt(c.msdMaxFrac * 100)}% of a track are not computed at all because they average over too few starting points to be stable. The effective diffusion coefficient is MSD ÷ 4τ at the reference lag, in two dimensions. Because overlapping time windows are used, neighbouring points on an MSD curve are correlated — read the shape, and do the statistics on the per-animal α and D rather than on the curve.</p>
 
 <h3>The salt gradient, and responses to it</h3>
-<p>A chemotaxis plate carries no sensor, so the stimulus has to be modelled. A drop of volume <i>v</i> of a <i>c</i>&#8203;<sub>0</sub> stock placed on the agar <i>t</i> seconds ago is treated as a point bolus diffusing in a thin layer, which gives, at a distance <i>r</i> from the spot, C(r) = 10<sup>6</sup>·N / &#8730;(4&#960;hD t) · exp(&#8722;r&#178;/4D t), with N = (c<sub>0</sub>/1000)·(v/10<sup>6</sup>) moles, <i>h</i> the agar height in cm computed from the volume poured and the area of the plate, and D = 1.516&#215;10<sup>&#8722;5</sup> cm&#178;&#183;s<sup>&#8722;1</sup> for NaCl (Robinson &amp; Stokes 1951). Several drops add linearly on top of the salt already in the agar. Nothing in this expression is fitted to the behavioural data, and the full source — including a standalone Python copy with your own numbers in it — is on the Gradient code tab so it can be checked independently.</p>
+<p>A chemotaxis plate carries no sensor, so the stimulus has to be modelled. A drop of volume <i>v</i> of a <i>c</i>&#8203;<sub>0</sub> stock placed on the agar <i>t</i> seconds ago is treated as a point bolus diffusing in a thin layer, which gives, at a distance <i>r</i> from the spot, C(r) = 10<sup>6</sup>·N / &#8730;(4&#960;hD t) · exp(&#8722;r&#178;/4D t), with N = (c<sub>0</sub>/1000)·(v/10<sup>6</sup>) moles, <i>h</i> the agar height in cm computed from the volume poured and the area of the plate, and D = 1.516&#215;10<sup>&#8722;5</sup> cm&#178;&#183;s<sup>&#8722;1</sup> for NaCl (Robinson &amp; Stokes 1951). Several drops add linearly on top of the salt already in the agar. Nothing in this expression is fitted to the behavioural data, and the full source — including a standalone Python copy with your own numbers in it — is in the box below, so it can be checked independently.</p>
 <p>Three caveats are worth stating in a methods section. The model assumes a laterally infinite, uniformly thick layer, so it is wrong within a few millimetres of the rim and wrong if the plate was poured unevenly. It assumes the drop was absorbed instantly at a point, which is a good approximation once the drop is hours old and a poor one in the first minutes. And it uses the normalisation of the source notebook, &#8730;(4&#960;hD t); any constant error in that normalisation scales every concentration by the same factor, which shifts the axis of the response plots but leaves the sign and the significance of every slope untouched.</p>
 <p>Each animal is then put through its own modelled field. At every sample the distance to the spot gives a concentration C; from that follow the change since the previous sample, the change across an adjustable look-back window (&#916;C), the instantaneous rate of change dC/dt, and the change expressed as a percentage of the previous concentration. Reorientation rate against each of these is computed the same way the bearing analysis is computed: the recording is divided into bins of the salt variable, the time each animal spent in each bin and the number of reorientations that began there are counted separately per animal, and the rate is a count divided by a time rather than an average of ratios. Bin edges are built from every condition pooled, so panels are directly comparable, and are either equal in width across a trimmed central range or equal in count, switchable. A straight line fitted across the bins gives one slope per replicate; those slopes are compared between conditions and tested against zero.</p>
 <p>A negative slope against &#916;C or dC/dt is the signature of klinokinesis: fewer reorientations while the salt is rising, more while it is falling, which biases an otherwise random walk up the gradient. The percentage-change plot is the Weber-scaled version of the same measure, and is the better one if the animals respond to relative rather than absolute change. Conditions marked <b>No gradient</b> are run through identical code against the position the spot would have occupied; their slopes should sit at zero, and a result in which the gradient condition differs from zero while the control does not is a far stronger claim than the two conditions merely differing from each other.</p>
@@ -5044,9 +5477,8 @@ function renderGuide() {
 <p><b>Salt gradient</b> — where you describe the plate: how big it was, how much agar, and the drops of salt you put on it and when. From that the tool works out the concentration everywhere on the plate. You only do this once.</p>
 <p><b>Salt response</b> — the question "does the salt the worm just tasted change how often it turns?". Going <i>up</i> the gradient should mean fewer turns, going <i>down</i> should mean more. A line sloping downwards is the whole chemotaxis strategy in one picture.</p>
 <p><b>Gradient map</b> — the tracks drawn on top of the salt. Dark is salty. This is the figure to put at the top of a poster.</p>
-<p><b>Gradient code</b> — the actual equation and the actual code used for the salt, in case you (or an examiner) want to check it. You can download it as a Python file and run it yourself.</p>
-<p><b>Methods</b> — the exact equations, for when you write this up.</p>
-<p><b>Export</b> — every table as a spreadsheet file and every figure as SVG, PNG or PDF.</p>
+<p><b>Methods</b> — the exact equations, for when you write this up, and at the bottom the actual code used for the salt gradient: download it as a Python file and run it yourself if you (or an examiner) want to check it.</p>
+<p><b>Import &amp; export</b> — out: every table as a spreadsheet file, every figure as SVG, PNG or PDF, and one archive holding the lot. In: a project archive or a settings file from a previous session, which brings all your choices back.</p>
 
 <h3>5 · How to read the plots</h3>
 <p>Most comparison plots look the same. The <b>bar</b> is the average of the group. The <b>whiskers</b> show how uncertain that average is (by default the standard error of the mean — short whiskers mean the average is well pinned down). Every <b>dot</b> is one animal or one plate; they are spread sideways only so they do not sit on top of each other, and the sideways position means nothing.</p>
@@ -5060,7 +5492,7 @@ function renderGuide() {
 <li>Too low: strings of marks along a gently curving path, or marks on straight stretches. Too high: an obvious hairpin with no mark on it.</li>
 <li>Open <b>Threshold diagnostics</b>. The <i>sensitivity curve</i> shows what the answer would be at every possible threshold. Pick a value on a flat part of that curve, where nudging it by 20% barely changes anything — and, most importantly, where it does not change which group comes out on top. <b>A result that only exists at one exact threshold is not a result.</b></li>
 <li>Pick the threshold before you look at the group comparison, not after. Better still, do it with the condition names hidden from yourself.</li>
-<li>Whatever you choose, use the same value for every condition, and write it down. The <i>Save settings</i> button on the Export tab records every number for you.</li>
+<li>Whatever you choose, use the same value for every condition, and write it down. The <i>Save settings</i> button on the Import and export tab records every number for you.</li>
 </ul>
 
 <h3>7 · The mistake that matters most: what counts as "n"</h3>
