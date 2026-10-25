@@ -172,4 +172,4 @@ Methods implemented here follow, among others:
 
 ## Licence
 
-Not yet chosen — add one before sharing widely (MIT is the usual choice for a tool like this).
+Not yet chosen.
