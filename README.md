@@ -5,7 +5,7 @@ file in a browser, drop in your tracking output, and get reorientation rates, sp
 gradient navigation, roaming/dwelling, MSD and salt-response plots — with the statistics, the figures
 and the raw numbers ready to export.
 
-**[Open the app →](https://anjaliav.github.io/Chemotaxis_Tracks_Analysis_Webapp_v1/](https://anjaliav.github.io/Chemotaxis-Analysis-Webapp/)**
+**[Open the app →](https://anjaliav.github.io/Chemotaxis-Analysis-Webapp/)**
 
 Nothing is uploaded anywhere. The whole program is one `index.html` with no libraries and no build
 step; it runs entirely in the browser, works offline, and your data never leaves your computer.
