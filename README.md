@@ -15,18 +15,30 @@ step; it runs entirely in the browser, works offline, and your data never leaves
 ## Quick start
 
 1. Open the link above, or download `index.html` and double-click it.
-2. On the **Tracks** tab, drag your CSV or `.xlsx` files onto the drop zone — one file per plate.
-3. On **Data & groups**, add a second condition and drop its files in.
-4. On **Data & groups**, set the **frame rate** (fps) and the **scale** (pixels per mm). Without
-   them the app still works, but time is counted in frames and distance in pixels. A calibrated
-   recording can still be plotted in pixels — *Distance axes* switches the axes without touching the
-   salt model, which always works in millimetres.
-5. Go back to **Tracks** and move the threshold sliders until the marks land on the turns you can
-   actually see. That calibration step is the analysis; everything downstream follows from it.
+2. In **Data & groups**, create each condition and add its CSV or Excel recordings.
+3. Set the fallback frame rate, select the spatial calibration mode, and enter each recording’s goal
+   and plate centre on the same tab. Regression bearing assignment requires a frame rate.
+   Use **Distance axes** to display tracks and distances in pixels.
+4. Open **Tracks** and adjust the turn thresholds until the marks line up with the turns
+   you can see.
 
 There is a **Load demo data** button if you want to see the whole thing working before you commit
 your own files, and a **Guide for beginners** tab written for someone meeting worm tracking for the
 first time.
+
+When recorded scales span at most 5 pixels/mm, the app averages their pixel sizes in µm/pixel
+and converts the mean into one scale for all conditions. A manually entered scale overrides
+automatic averaging.
+
+Under **Data & groups → Calibration → Spatial calibration**, select **Use each recording’s
+reported scale** to convert each video’s tracks and landmarks to millimetres using its scale override
+or reported scale. The fallback applies when both are blank. If some recordings still need a scale,
+the app lists them and excludes them from millimetre-based analysis.
+
+In **Data & groups**, each recording’s **FPS override** takes precedence over its file metadata
+and the shared fallback frame rate. Recordings with known rates are compared in seconds. If some
+rates are missing, those recordings are excluded from the analysis until a rate is provided.
+When all rates are missing, analysis uses frames.
 
 ---
 
@@ -69,11 +81,21 @@ you the percentage of rows carrying each code and lets you choose which to keep 
 - A modelled salt gradient, and reorientation rate against concentration, ΔC, dC/dt and % change
 - Tracks and reorientation locations drawn over the modelled gradient field
 
-**Statistics.** Two groups: Welch's *t* and Mann–Whitney *U*. Three or more: one-way ANOVA with
-pairwise Welch tests, and Kruskal–Wallis with Dunn's post hoc — all Holm-corrected. A D'Agostino K²
-screen decides which family is reported as primary. The replicate unit is switchable between
-individual worm and plate; plate is the conservative choice when you have several plates per
-condition. The statistics library was verified digit-for-digit against SciPy.
+**Statistics.** Plate / file is the default replicate unit. With two conditions, the plate
+comparisons for runs, total distance, overall reorientation, and bearing slopes report a Welch
+test and a 95% confidence interval for the mean difference. They assume independent plates.
+Other comparisons retain the Welch and Mann–Whitney tests for two conditions, and ANOVA or
+Kruskal–Wallis with Holm-adjusted post hoc comparisons for three or more.
+
+**Bearing.** The selected curve uses Method B turns, a 3 s heading regression ending 1 s before
+estimated onset, eligible-run exposure, and five bearing bins by default. Each bin rate divides
+pooled worm event counts by pooled exposure time on that plate. The curve shows the plate mean and
+pointwise 95% confidence intervals. Files with the same plate ID and experimental day pool for
+bearing. Each plate with at least three bins with exposure contributes one slope. The slope plot can
+overlay worm fits, and the analysis supports day adjustment and exploratory bin comparisons with
+Holm-adjusted p-values. Rejected bearings retain their original detected-event counts. Navigation
+also shows the legacy curve, event inspection, and sensitivity and frame-rate checks. See the
+**Methods** tab for the estimator and exposure definitions.
 
 **No-gradient controls.** Mark a condition as *No gradient* and it is not skipped — it goes through
 identical code against the position the cue would have occupied. Every navigation and salt measure is
@@ -82,13 +104,38 @@ and the control does not", which is stronger than the two merely differing.
 
 ---
 
+## Recording landmarks and maps
+
+Enter each recording’s goal and plate centre in **Data & groups**, in original video pixels.
+Excel files with a `start-end coords` sheet fill the recording start and salt peak automatically.
+The **Mark on plot** control edits one recording at a time. Tracks align to the recording start
+when available and otherwise to each worm’s first position. Whole-plate maps align recording centres
+using the diameter under **Salt gradient**. Recordings with missing centres are listed and can
+be viewed in **Track region**.
+Rotation uses the centre-to-goal axis for plate-aligned maps. **One panel per recording**
+centres each field on that recording’s goal, imported as the **End Point** in Excel. Pooled
+maps centre the field on the mean goal and show individual goals as open circles. The solid
+rim is the plate boundary. The dashed ring marks the worm-placement radius in millimetres.
+Salt and bearing calculations use the original recording coordinates. Maps use millimetres
+when the plotted recordings have different spatial scales.
+
+On **Gradient map**, **Reorientation colour → By bearing (Viridis)** colours reorientation
+starts by the bearing just before the turn, from −1 (away from the goal) to +1 (toward it).
+The figure exports include the bearing legend, and the reorientation CSV includes the value
+for each turn.
+
+---
 
 ## Exports
 
 Everything the app shows can leave it.
 
-- **Per figure** — a button row under every panel: `CSV` (the numbers behind that figure, wide
-  format), `SVG`, `PNG`, `PDF`.
+- **Per figure** — `CSV` provides wide-format data with separate columns for each condition.
+  `Plate & worm CSV` on the runs, total distance, overall reorientation, and bearing slope plots
+  lists each plate followed by its worms. Filter the `Unit` column to select either level.
+  The slope export includes fit coverage for both levels and leaves unavailable slopes blank.
+  `Plate bins CSV` on the bearing curve includes counts and exposure time.
+  Figures are also available as `SVG`, `PNG`, and `PDF`.
 - **`csv/`** — every table in long format, one file each, for scripting.
 - **`wide/column/`** — one column per condition, one row per replicate. Paste into GraphPad Prism as
   a Column table.
@@ -125,8 +172,9 @@ Any current Chrome, Edge, Firefox (113+) or Safari (16.4+). Reading `.xlsx` need
 ## Repository layout
 
 ```
-index.html    the entire application
-README.md     this file
+index.html                             the current application
+Worm_Track_Analyzer_Chemotaxis.html    earlier standalone analyzer snapshot
+README.md                              this file
 ```
 
 ## Citing
